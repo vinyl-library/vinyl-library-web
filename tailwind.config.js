@@ -7,13 +7,13 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'powder': '#F8F8F0',
-      'tiger': '#BC6C25',
-      'buff': '#D4A373',
-      'crayola': '#FB5770',
-      'bean':'#3B1500',
-      'lace': '#F7F3E6',
-      'alabaster': '#EAE6D9'
+      powder: '#F8F8F0',
+      tiger: '#BC6C25',
+      buff: '#D4A373',
+      crayola: '#FB5770',
+      bean: '#3B1500',
+      lace: '#F7F3E6',
+      alabaster: '#EAE6D9',
     },
     fontFamily: {
       montserrat: ['Montserrat', 'sans-serif'],
