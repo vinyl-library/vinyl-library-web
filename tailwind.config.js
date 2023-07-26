@@ -5,6 +5,7 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: false,
   theme: {
     colors: {
       powder: '#F8F8F0',
@@ -25,6 +26,11 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+    },
+  },
+  variants: {
+    extend: {
+      scale: ['active', 'group-hover'],
     },
   },
   plugins: [],

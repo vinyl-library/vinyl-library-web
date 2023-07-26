@@ -1,14 +1,10 @@
 import React from 'react'
-// import {HeroSection, FAQSection} from './sections
-// import {} from './module-elements'
+import LoginSection from './sections'
 
 export const LoginModule: React.FC = () => {
-  // TODO: Write module's logic
-
   return (
-    <>
-      {/* <HeroSection></HeroSection> */}
-      {/* <FAQSection></FAQSection> */}
-    </>
+    <div className="bg-powder font-montserrat bg-opacity-90 overflow-x-hidden lg:overflow-x-auto lg:overflow-hidden flex items-center justify-center lg:h-screen">
+      <LoginSection />
+    </div>
   )
 }
