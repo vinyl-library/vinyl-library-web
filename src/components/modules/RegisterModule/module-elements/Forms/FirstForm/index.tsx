@@ -1,13 +1,13 @@
 import React from 'react'
-import { LoginInputs } from './interface'
+import { FirstFormInputs } from './interface'
 import { useFormContext } from 'react-hook-form'
 import CustomTextInput from 'src/components/elements/CustomTextInput'
 
-const LoginForm: React.FC = () => {
+const FirstForm: React.FC = () => {
   const {
     register,
     formState: { errors },
-  } = useFormContext<LoginInputs>()
+  } = useFormContext<FirstFormInputs>()
 
   return (
     <>
@@ -27,6 +27,14 @@ const LoginForm: React.FC = () => {
           {...register('username', { required: true })}
         />
         <CustomTextInput
+          error={errors.name && 'Please fill your name'}
+          type="text"
+          className="w-full"
+          label="Name"
+          placeholder="Your name"
+          {...register('name', { required: true })}
+        />
+        <CustomTextInput
           error={errors.password && 'Please fill your password'}
           type="text"
           className="w-full"
@@ -39,4 +47,4 @@ const LoginForm: React.FC = () => {
   )
 }
 
-export default LoginForm
+export default FirstForm

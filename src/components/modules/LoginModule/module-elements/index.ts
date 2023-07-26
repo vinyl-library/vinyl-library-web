@@ -1,2 +1,2 @@
 export * from './LoginForm'
-export * from './ProductSide'
+export * from '../../../elements/ProductSide'

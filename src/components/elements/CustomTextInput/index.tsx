@@ -68,7 +68,7 @@ const CustomTextInput = forwardRef<
         )}
 
         {!!error && (
-          <div className="flex items-center text-left text-sm gap-[4px] text-[#FF7387]">
+          <div className="flex items-center text-left text-sm gap-[4px] text-[#f71e3f]">
             <ErrorIcon size="" />
             {error}
           </div>
