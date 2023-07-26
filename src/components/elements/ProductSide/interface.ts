@@ -1,3 +1,3 @@
 export interface ProductSideProps {
-    imageUrl: string
+  imageUrl: string
 }

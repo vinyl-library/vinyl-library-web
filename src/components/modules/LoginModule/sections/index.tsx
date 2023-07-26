@@ -3,11 +3,7 @@ import Link from 'next/link'
 import LoginForm from '../module-elements/LoginForm'
 import ProductSide from '../../../elements/ProductSide'
 import { LoginInputs } from '../module-elements/LoginForm/interface'
-import {
-  FormProvider,
-  useForm,
-  SubmitHandler
-} from 'react-hook-form'
+import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
 
 const LoginSection: React.FC = () => {
   const { ...methods } = useForm<LoginInputs>()
@@ -18,7 +14,7 @@ const LoginSection: React.FC = () => {
 
   return (
     <section className="w-full lg:shadow-2xl lg:w-4/5 lg:bg-[#ffffff] h-screen lg:h-[90vh] lg:border border-gray-300 rounded-xl flex flex-wrap lg:flex-nowrap flex-col lg:flex-row justify-between group">
-      <ProductSide imageUrl='/Login.png' />
+      <ProductSide imageUrl="/Login.png" />
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}

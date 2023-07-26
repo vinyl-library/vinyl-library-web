@@ -1,4 +1,4 @@
 export interface FavoriteGenreProps {
-    onClick: () => void
-    className?: string
+  onClick: () => void
+  className?: string
 }

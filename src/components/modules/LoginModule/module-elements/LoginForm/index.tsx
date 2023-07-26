@@ -13,7 +13,9 @@ const LoginForm: React.FC = () => {
     <>
       <div className="w-full space-y-5">
         <div className="flex items-end justify-center text-center space-x-3 mb-20">
-          <span className="text-3xl lg:text-6xl font-black text-crayola">Login</span>
+          <span className="text-3xl lg:text-6xl font-black text-crayola">
+            Login
+          </span>
         </div>
       </div>
 

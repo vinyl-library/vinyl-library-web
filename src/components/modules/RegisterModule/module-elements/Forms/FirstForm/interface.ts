@@ -1,5 +1,5 @@
 export interface FirstFormInputs {
-    username: string
-    name: string
-    password: string
+  username: string
+  name: string
+  password: string
 }
