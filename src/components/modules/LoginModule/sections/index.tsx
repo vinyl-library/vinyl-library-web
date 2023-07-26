@@ -24,7 +24,6 @@ const LoginSection: React.FC = () => {
             <LoginForm />
 
             <div className="flex flex-col items-center justify-center gap-2">
-            
               <button
                 type="submit"
                 className="flex items-center shadow-sm w-full lg:w-[80%] hover:shadow-lg shadow-buff hover:bg-opacity-90 text-lg rounded-xl lg:text-xl bg-crayola font-bold justify-center py-3 px-14 hover:px-12"
