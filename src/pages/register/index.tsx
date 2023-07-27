@@ -3,7 +3,11 @@ import { RegisterModule } from '@modules'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { RegisterContextProvider } from '@contexts'
 import axios from 'axios'
-import { RegisterPageProps } from './interface'
+import { Genre } from 'src/components/contexts/RegisterContext/interface'
+
+export interface RegisterPageProps {
+  genre: Genre[]
+}
 
 const Register = ({
   genre,
