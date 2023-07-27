@@ -29,7 +29,7 @@ const CustomTextInput = forwardRef<
     const handlePasswordVisibility = () => setIsInvisible(!isInvisible)
 
     return (
-      <div className="flex flex-col gap-3 text-[12px] md:text-[16px] justify-start items-start ">
+      <div className="flex flex-col gap-1 text-[12px] md:text-[16px] justify-start items-start ">
         <label className="text-lg lg:text-xl font-bold text-bean tracking-wide">
           {label}
         </label>
@@ -61,7 +61,7 @@ const CustomTextInput = forwardRef<
         </div>
 
         {!error && helper && (
-          <div className="flex items-center gap-[4px] dark:text-white">
+          <div className="flex items-center gap-[4px]">
             <HelperIcon size="" />
             {helper}
           </div>
