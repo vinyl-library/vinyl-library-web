@@ -1,42 +1,42 @@
 export const GENRES = [
   {
-    id: 1,
+    id: '1',
     name: 'Mystery',
   },
   {
-    id: 2,
+    id: '2',
     name: 'Romance',
   },
   {
-    id: 3,
+    id: '3',
     name: 'Science Fiction',
   },
   {
-    id: 4,
+    id: '4',
     name: 'Fantasy',
   },
   {
-    id: 5,
+    id: '5',
     name: 'Historical Fiction',
   },
   {
-    id: 6,
+    id: '6',
     name: 'Thriller',
   },
   {
-    id: 7,
+    id: '7',
     name: 'Horror',
   },
   {
-    id: 8,
+    id: '8',
     name: 'Adventure',
   },
   {
-    id: 9,
+    id: '9',
     name: 'Dystopian',
   },
   {
-    id: 10,
+    id: '10',
     name: 'Teenlit',
   },
 ]

@@ -3,7 +3,7 @@ import { FirstFormInputs } from './interface'
 import { useFormContext } from 'react-hook-form'
 import CustomTextInput from 'src/components/elements/CustomTextInput'
 
-const FirstForm: React.FC = () => {
+export const FirstForm: React.FC = () => {
   const {
     register,
     formState: { errors },
@@ -38,7 +38,7 @@ const FirstForm: React.FC = () => {
         />
         <CustomTextInput
           error={errors.password && 'Please fill your password'}
-          type="text"
+          type="password"
           className="w-full"
           label="Password"
           placeholder="Your password"
@@ -48,5 +48,3 @@ const FirstForm: React.FC = () => {
     </>
   )
 }
-
-export default FirstForm

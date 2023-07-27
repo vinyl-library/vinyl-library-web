@@ -1,2 +1,2 @@
 export * from './FormStepper'
-export * from './FavoriteGenre'
+export * from './Genre'

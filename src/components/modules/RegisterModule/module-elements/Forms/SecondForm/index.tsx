@@ -1,22 +1,31 @@
 import React, { useState } from 'react'
 import { SecondFormInput } from './interface'
 import { useFormContext } from 'react-hook-form'
-import FavoriteGenre from '../../FavoriteGenre'
+import Genre from '../../Genre'
+import toast from 'react-hot-toast'
+import { useRegisterContext } from '@contexts'
 
-const SecondForm: React.FC = () => {
+export const SecondForm: React.FC = () => {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([])
 
   const {
+    setValue,
     formState: { errors },
   } = useFormContext<SecondFormInput>()
 
+  const { genre } = useRegisterContext()
+
   const handleGenreSelection = (genreId: string) => {
     if (selectedGenres.includes(genreId)) {
-      setSelectedGenres((prevSelected) =>
-        prevSelected.filter((id) => id !== genreId)
-      )
+      const newSelected = selectedGenres.filter((id) => id !== genreId)
+      setSelectedGenres(newSelected)
+      setValue('favoriteGenre', newSelected)
     } else if (selectedGenres.length < 5) {
-      setSelectedGenres((prevSelected) => [...prevSelected, genreId])
+      const newSelected = [...selectedGenres, genreId]
+      setSelectedGenres(newSelected)
+      setValue('favoriteGenre', newSelected)
+    } else {
+      toast.error('Haloooo')
     }
   }
 
@@ -25,14 +34,20 @@ const SecondForm: React.FC = () => {
       <span className="flex text-crayola text-xl font-semibold mb-4">
         Select Your Favorite Genres
       </span>
-      <FavoriteGenre
-        onClick={() => handleGenreSelection}
-        className={`
-                selectedGenres.includes(genre.id)
-                    ? 'bg-crayola text-[#ffffff]'
-                    : 'bg-buff bg-opacity-70 text-buff'`}
-      />
-      {errors.genres && (
+      <div className="flex flex-wrap">
+        {genre.map((genre) => {
+          return (
+            <Genre
+              onClick={() => handleGenreSelection(genre.id)}
+              key={genre.id}
+              value={genre.name}
+              isSelected={selectedGenres.includes(genre.id)}
+            />
+          )
+        })}
+      </div>
+
+      {errors.favoriteGenre && (
         <p className="text-[#f71e3f] mt-2">Please select at least one genre</p>
       )}
       {selectedGenres.length > 5 && (
@@ -43,5 +58,3 @@ const SecondForm: React.FC = () => {
     </div>
   )
 }
-
-export default SecondForm

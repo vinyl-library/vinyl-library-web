@@ -1,3 +1,3 @@
 export interface SecondFormInput {
-  genres: string[]
+  favoriteGenre: string[]
 }
