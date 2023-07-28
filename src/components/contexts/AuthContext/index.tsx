@@ -1,14 +1,55 @@
-import React, { createContext, useContext } from 'react'
-// import from './interface'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import {
+  AuthProviderProps,
+  AuthContextProps,
+  HttpRequestProps,
+  User,
+} from './interface'
+import axios from 'axios'
 
-const AuthContext = createContext({}) // TODO: Declare interface of contextValue
+const AuthContext = createContext<AuthContextProps>({} as AuthContextProps)
 
 export const useAuthContext = () => useContext(AuthContext)
 
-export const AuthContextProvider: React.FC = () => {
-  // TODO: Write context's logic
+export const AuthContextProvider: React.FC<AuthProviderProps> = ({
+  children,
+}) => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const [user, setUser] = useState<User>()
 
-  const contextValue = {}
+  async function httpRequest<T>({ path, body, method }: HttpRequestProps) {
+    const res = await axios({
+      method,
+      url: path,
+      data: body,
+      withCredentials: true,
+    })
+    return res.data as T
+  }
 
-  return <AuthContext.Provider value={contextValue}></AuthContext.Provider>
+  const checkIsLoggedIn = async () => {
+    try {
+      await httpRequest({ method: 'get', path: '/api/protected' })
+      setIsLoggedIn(true)
+    } catch (err) {
+      setIsLoggedIn(false)
+    }
+  }
+
+  useEffect(() => {
+    checkIsLoggedIn()
+  }, [])
+
+  const contextValue = {
+    httpRequest,
+    checkIsLoggedIn,
+    isLoggedIn,
+    setIsLoggedIn,
+    user,
+    setUser,
+  }
+
+  return (
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+  )
 }
