@@ -30,7 +30,7 @@ const RegisterSection: React.FC = () => {
       await axios.post('/api/auth/register', data)
       setIsLoading(false)
       toast.success('Successfully registered')
-      router.push("/login")
+      router.push('/login')
     } catch (err: any) {
       setIsLoading(false)
       toast.error('Failed to register')
