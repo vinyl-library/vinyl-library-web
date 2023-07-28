@@ -4,8 +4,10 @@ import {
   AuthContextProps,
   HttpRequestProps,
   User,
+  httpRequestGetUserInterface,
 } from './interface'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps)
 
@@ -16,6 +18,7 @@ export const AuthContextProvider: React.FC<AuthProviderProps> = ({
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
   const [user, setUser] = useState<User>()
+  const router = useRouter()
 
   async function httpRequest<T>({ path, body, method }: HttpRequestProps) {
     const res = await axios({
@@ -29,15 +32,27 @@ export const AuthContextProvider: React.FC<AuthProviderProps> = ({
 
   const checkIsLoggedIn = async () => {
     try {
-      await httpRequest({ method: 'get', path: '/api/protected' })
+      const res = await httpRequest<httpRequestGetUserInterface>({
+        method: 'get',
+        path: '/api/user',
+      })
+      console.log(res)
       setIsLoggedIn(true)
+      setUser(res.data)
     } catch (err) {
       setIsLoggedIn(false)
+      setUser(undefined)
     }
   }
 
+  const checkUser = async () => {
+    await checkIsLoggedIn()
+    if(!user) {
+      router.push('/login')
+    }
+  }
   useEffect(() => {
-    checkIsLoggedIn()
+    checkUser()
   }, [])
 
   const contextValue = {

@@ -1,6 +1,7 @@
 import { Toaster } from 'react-hot-toast'
 import '../styles/globals.css'
 import { AppProps } from 'next/app'
+import { AuthContextProvider } from '@contexts'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -21,7 +22,9 @@ export default function App({ Component, pageProps }: AppProps) {
           },
         }}
       />
-      <Component {...pageProps} />
+      <AuthContextProvider>
+        <Component {...pageProps} />
+      </AuthContextProvider>
     </>
   )
 }

@@ -11,6 +11,11 @@ export interface AuthContextProps {
   httpRequest: <T>(props: HttpRequestProps) => Promise<T>
 }
 
+export interface httpRequestGetUserInterface {
+  message: string
+  data: User
+}
+
 export interface HttpRequestProps {
   path: string
   body?: any
