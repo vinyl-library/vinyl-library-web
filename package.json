@@ -15,16 +15,22 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@mui/material": "^5.14.2",
+    "@mui/styles": "^5.14.1",
     "@types/node": "20.3.0",
     "@types/react": "18.2.11",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "compfest-silicon": "1.4.3-0",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.5",
     "next": "13.4.5",
+    "next-http-proxy-middleware": "^1.2.5",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.45.2",
     "react-hot-toast": "^2.4.1",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.3"

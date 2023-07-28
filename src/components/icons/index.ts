@@ -1,1 +1,2 @@
-export * from './'
+export * from './ErrorIcon'
+export * from './HelperIcon'
