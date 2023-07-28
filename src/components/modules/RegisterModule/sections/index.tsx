@@ -7,6 +7,7 @@ import { SecondFormInput } from '../module-elements/Forms/SecondForm/interface'
 import { FirstForm, SecondForm } from '../module-elements/Forms'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
+import { BackButton } from '@elements'
 
 const RegisterSection: React.FC = () => {
   const { ...methods } = useForm<FirstFormInputs & SecondFormInput>()
@@ -43,7 +44,12 @@ const RegisterSection: React.FC = () => {
         >
           <div className="items-center space-y-4 lg:px-12 lg:h-full h-screen px-10 relative z-10 lg:pt-10 2xl:pt-16">
             {activeStep === 1 && <FirstForm />}
-            {activeStep === 2 && <SecondForm />}
+            {activeStep === 2 && (
+              <div className="flex flex-col pl-7 gap-2">
+                <BackButton onClick={() => setActiveStep(1)} className="ml-4" />
+                <SecondForm />
+              </div>
+            )}
 
             <div className="flex flex-col items-center justify-center gap-2">
               {activeStep === 1 && (

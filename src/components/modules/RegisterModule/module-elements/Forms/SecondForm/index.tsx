@@ -31,8 +31,8 @@ export const SecondForm: React.FC = () => {
   }
 
   return (
-    <div className="mx-auto my-4 p-4">
-      <span className="flex text-crayola text-[12px] md:text-[14px] xl:text-[18px] font-bold mb-4">
+    <div className=" flex flex-col gap-5 mx-auto p-4">
+      <span className="flex text-crayola text-[12px] md:text-[14px] xl:text-[18px] font-bold py-2">
         Select Your Favorite Genres
       </span>
       <div className="flex flex-wrap">
