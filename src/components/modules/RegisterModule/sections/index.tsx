@@ -8,11 +8,13 @@ import { FirstForm, SecondForm } from '../module-elements/Forms'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { BackButton } from '@elements'
+import { useRouter } from 'next/router'
 
 const RegisterSection: React.FC = () => {
   const { ...methods } = useForm<FirstFormInputs & SecondFormInput>()
   const [activeStep, setActiveStep] = useState<number>(1)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const router = useRouter()
 
   const onSubmit: SubmitHandler<FirstFormInputs & SecondFormInput> = async (
     data
@@ -28,6 +30,7 @@ const RegisterSection: React.FC = () => {
       await axios.post('/api/auth/register', data)
       setIsLoading(false)
       toast.success('Successfully registered')
+      router.push("/login")
     } catch (err: any) {
       setIsLoading(false)
       toast.error('Failed to register')
