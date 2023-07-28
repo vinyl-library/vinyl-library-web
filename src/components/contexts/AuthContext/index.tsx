@@ -47,7 +47,7 @@ export const AuthContextProvider: React.FC<AuthProviderProps> = ({
 
   const checkUser = async () => {
     await checkIsLoggedIn()
-    if(!user) {
+    if (!user) {
       router.push('/login')
     }
   }
