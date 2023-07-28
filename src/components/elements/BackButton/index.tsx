@@ -1,8 +1,7 @@
 import { BiArrowBack } from 'react-icons/bi'
 import { BackButtonProps } from './interface'
-import { ComponentPropsWithoutRef } from 'react'
 
-export const BackButton: React.FC<ComponentPropsWithoutRef<"button">> = ({
+export const BackButton: React.FC<BackButtonProps> = ({
   onClick,
   className,
 }) => {
