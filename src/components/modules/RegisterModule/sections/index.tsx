@@ -41,7 +41,7 @@ const RegisterSection: React.FC = () => {
           onSubmit={methods.handleSubmit(onSubmit)}
           className="w-full lg:w-1/2 order-1 lg:order-2 bg-white"
         >
-          <div className="items-center space-y-16 lg:px-12 lg:h-full px-10 relative z-10 pt-16">
+          <div className="items-center space-y-4 lg:px-12 lg:h-full h-screen px-10 relative z-10 lg:pt-10 2xl:pt-16">
             {activeStep === 1 && <FirstForm />}
             {activeStep === 2 && <SecondForm />}
 
@@ -49,7 +49,7 @@ const RegisterSection: React.FC = () => {
               {activeStep === 1 && (
                 <button
                   type="button"
-                  className="flex items-center shadow-sm w-full lg:w-[80%] hover:shadow-lg shadow-buff hover:bg-opacity-90 text-lg rounded-xl lg:text-xl bg-crayola font-bold justify-center py-3 px-14 hover:px-12"
+                  className="flex items-center shadow-sm w-full lg:w-[80%] hover:shadow-lg shadow-buff hover:bg-opacity-90 rounded-lg text-[12px] md:text-[14px] lg:text-[18px] bg-crayola font-bold justify-center py-2 px-8"
                   onClick={async () => {
                     if (
                       await methods.trigger(['name', 'username', 'password'])
@@ -64,20 +64,20 @@ const RegisterSection: React.FC = () => {
               {activeStep === 2 && (
                 <button
                   type="submit"
-                  className="flex items-center shadow-sm w-full lg:w-[80%] hover:shadow-lg shadow-buff hover:bg-opacity-90 text-lg rounded-xl lg:text-xl bg-crayola font-bold justify-center py-3 px-14 hover:px-12"
+                  className="flex items-center shadow-sm w-full lg:w-[80%] hover:shadow-lg shadow-buff hover:bg-opacity-90 rounded-lg text-[12px] md:text-[14px] lg:text-[18px] bg-crayola font-bold justify-center py-2 px-8"
                   disabled={isLoading}
                 >
                   Submit
                 </button>
               )}
 
-              <span className="text-tiger">
+              <span className="text-tiger text-[10px] md:text-[12px] xl:text-[16px]">
                 Already have an account?{' '}
                 <Link
                   href={''}
                   className="font-semibold hover:text-crayola hover:underline"
                 >
-                  Register
+                  Login
                 </Link>
               </span>
             </div>

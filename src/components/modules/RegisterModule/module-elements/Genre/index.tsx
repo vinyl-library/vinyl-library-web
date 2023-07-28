@@ -7,7 +7,7 @@ const Genre: React.FC<
   return (
     <button
       type="button"
-      className={`px-4 py-2 my-2 mr-2 rounded-full font-semibold ${
+      className={`text-[10px] md:text-[12px] xl:text-[16px] px-2 py-1 my-2 mr-2 rounded-full font-semibold ${
         isSelected ? 'bg-buff bg-opacity-70 text-buff' : 'bg-crayola text-white'
       }`}
       {...props}

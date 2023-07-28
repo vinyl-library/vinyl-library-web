@@ -10,16 +10,12 @@ const LoginForm: React.FC = () => {
   } = useFormContext<LoginInputs>()
 
   return (
-    <>
-      <div className="w-full space-y-5">
-        <div className="flex items-end justify-center text-center space-x-3 mb-20">
-          <span className="text-3xl lg:text-6xl font-black text-crayola">
-            Login
-          </span>
-        </div>
-      </div>
+    <div className="flex flex-col gap-6 lg:gap-8 xl:gap-10">
+      <span className="flex justify-center text-[16px] md:text-[18px] lg:text-[24px] font-black text-crayola">
+        Login
+      </span>
 
-      <div className="flex flex-col gap-y-10 w-full lg:w-4/5 mx-auto">
+      <div className="flex flex-col gap-4 items-center justify-center w-full">
         <CustomTextInput
           error={errors.username && 'Please fill your username'}
           type="text"
@@ -30,14 +26,14 @@ const LoginForm: React.FC = () => {
         />
         <CustomTextInput
           error={errors.password && 'Please fill your password'}
-          type="text"
+          type="password"
           className="w-full"
           label="Password"
           placeholder="Your password"
           {...register('password', { required: true })}
         />
       </div>
-    </>
+    </div>
   )
 }
 

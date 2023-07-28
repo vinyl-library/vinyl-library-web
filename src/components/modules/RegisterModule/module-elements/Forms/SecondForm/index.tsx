@@ -4,6 +4,7 @@ import { useFormContext } from 'react-hook-form'
 import Genre from '../../Genre'
 import toast from 'react-hot-toast'
 import { useRegisterContext } from '@contexts'
+import { ErrorIcon } from '@icons'
 
 export const SecondForm: React.FC = () => {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([])
@@ -31,7 +32,7 @@ export const SecondForm: React.FC = () => {
 
   return (
     <div className="mx-auto my-4 p-4">
-      <span className="flex text-crayola text-xl font-semibold mb-4">
+      <span className="flex text-crayola text-[12px] md:text-[14px] xl:text-[18px] font-bold mb-4">
         Select Your Favorite Genres
       </span>
       <div className="flex flex-wrap">
@@ -48,12 +49,10 @@ export const SecondForm: React.FC = () => {
       </div>
 
       {errors.favoriteGenre && (
-        <p className="text-[#f71e3f] mt-2">Please select at least one genre</p>
-      )}
-      {selectedGenres.length > 5 && (
-        <p className="text-[#f71e3f] mt-2">
-          You can select up to 5 genres only
-        </p>
+        <div className="flex items-center text-left text-[10px] md:text-[12px] xl:text-[16px] gap-[4px] text-[#f71e3f]">
+          <ErrorIcon size="" />
+          Please select at least one genre!
+        </div>
       )}
     </div>
   )
