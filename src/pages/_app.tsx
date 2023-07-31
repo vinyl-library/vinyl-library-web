@@ -2,6 +2,7 @@ import { Toaster } from 'react-hot-toast'
 import '../styles/globals.css'
 import { AppProps } from 'next/app'
 import { AuthContextProvider } from '@contexts'
+import { LayoutModule } from '@modules'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -23,7 +24,9 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       />
       <AuthContextProvider>
-        <Component {...pageProps} />
+        <LayoutModule>
+          <Component {...pageProps} />
+        </LayoutModule>
       </AuthContextProvider>
     </>
   )
