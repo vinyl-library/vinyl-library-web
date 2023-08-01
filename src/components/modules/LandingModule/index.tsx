@@ -1,5 +1,9 @@
-import { NextPage } from 'next'
+import { HeroSection } from './sections'
 
-export const LandingModule: NextPage = () => {
-  return <></>
+export const LandingModule: React.FC = () => {
+  return (
+    <>
+      <HeroSection/>
+    </>
+  )
 }
