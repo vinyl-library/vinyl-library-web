@@ -7,28 +7,40 @@ export const Navbar: React.FC = () => {
   const { user } = useAuthContext()
 
   return (
-    <nav className="flex bg-transparent justify-between p-6">
+    <nav className="flex bg-transparent justify-between p-8 3xl:p-10">
       <div className="flex gap-x-8">
-        <div className="flex gap-x-4 items-center">
+        <Link href="/" className="flex gap-x-4 items-center">
           <VinylLogo size="w-14 h-14" />
           <span className="flex text-tiger font-black font-mulish text-[40px]">
             Vinyl
           </span>
-        </div>
+        </Link>
 
         <div className="flex gap-x-4 items-center">
-          <Link
-            href="/"
-            className="text-buff hover:brightness-110 text-[24px] font-bold"
-          >
-            Home
-          </Link>
-          <Link
-            href="/"
-            className="text-buff hover:brightness-110 text-[24px] font-bold"
-          >
-            Dashboard
-          </Link>
+          {user === undefined ? (
+            <></>
+          ) : (
+            <>
+              <Link
+                href="/"
+                className="text-buff hover:brightness-110 text-[24px] font-bold"
+              >
+                Home
+              </Link>
+              <Link
+                href="/"
+                className="text-buff hover:brightness-110 text-[24px] font-bold"
+              >
+                Home
+              </Link>
+              <Link
+                href="/"
+                className="text-buff hover:brightness-110 text-[24px] font-bold"
+              >
+                Dashboard
+              </Link>
+            </>
+          )}
         </div>
       </div>
 
