@@ -47,11 +47,18 @@ export const Navbar: React.FC = () => {
       <div className="md:flex items-center relative py-2 md:py-0 font-semibold">
         {user === undefined ? (
           <>
-            <Link href="/login">
-              <button className="bg-crayola px-4 py-2 font-bold rounded-full text-[20px]">
-                Login
-              </button>
-            </Link>
+            <div className="flex gap-x-4 xl:gap-x-6 3xl:gap-x-8 items-center justify-end">
+              <Link href="/register">
+                <button className="font-bold text-buff hover:brightness-110 text-[20px]">
+                  Register
+                </button>
+              </Link>
+              <Link href="/login">
+                <button className="bg-crayola px-6 py-2 font-bold rounded-full text-[20px]">
+                  Login
+                </button>
+              </Link>
+            </div>
           </>
         ) : (
           <ProfileDropdown
