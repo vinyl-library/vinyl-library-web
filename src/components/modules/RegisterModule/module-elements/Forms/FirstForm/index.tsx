@@ -35,12 +35,18 @@ export const FirstForm: React.FC = () => {
     if (username.trim() !== '') {
       const isUsernameAvailable = await checkUsernameAvailability(username)
       if (isUsernameAvailable) {
-        setError('username', { type: 'manual', message: 'Username has been used' })
+        setError('username', {
+          type: 'manual',
+          message: 'Username has been used',
+        })
       } else {
         clearErrors('username')
       }
     } else {
-      setError('username', { type: 'manual', message: 'Please fill your username' })
+      setError('username', {
+        type: 'manual',
+        message: 'Please fill your username',
+      })
     }
   }
 
