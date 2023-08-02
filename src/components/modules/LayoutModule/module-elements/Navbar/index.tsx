@@ -31,12 +31,6 @@ export const Navbar: React.FC = () => {
                 href="/"
                 className="text-buff hover:brightness-110 text-[24px] font-bold"
               >
-                Home
-              </Link>
-              <Link
-                href="/"
-                className="text-buff hover:brightness-110 text-[24px] font-bold"
-              >
                 Dashboard
               </Link>
             </>

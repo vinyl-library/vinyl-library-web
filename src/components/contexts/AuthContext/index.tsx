@@ -39,7 +39,6 @@ export const AuthContextProvider: React.FC<AuthProviderProps> = ({
         method: 'get',
         path: '/api/user',
       })
-      console.log(res)
       setIsLoggedIn(true)
       setUser(res.data)
       if (unauthenticatedOnlyPath.includes(router.asPath)) {
@@ -60,7 +59,7 @@ export const AuthContextProvider: React.FC<AuthProviderProps> = ({
         method: 'post',
         path: 'api/auth/logout',
       })
-      toast.success('Successfully logout')
+      toast.success('Successfully logged out')
       setIsLoggedIn(false)
       setUser(undefined)
       router.push('/')

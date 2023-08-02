@@ -31,12 +31,12 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
       </div>
       {isOpen && (
         <div
-          className="flex flex-col items-start absolute rounded-lg border border-tiger bg-white text-black
+          className="flex flex-col items-start absolute rounded-lg border border-tiger bg-white
           px-4 py-2 top-14 -left-32 w-48"
         >
-          <span className="font-bold uppercase text-">{name}</span>
-          <span>@{username}</span>
-          <span>Fine: Rp{fine}</span>
+          <span className="font-bold uppercase text-bean">{name}</span>
+          <span className="text-tiger">@{username}</span>
+          <span className="text-tiger">Fine: Rp{fine}</span>
           <div className="border-t-2 border-black my-2 w-full" />
           <button
             className="text-sm text-white rounded-xl flex gap-x-2 bg-crayola justify-center items-center px-3 py-2"

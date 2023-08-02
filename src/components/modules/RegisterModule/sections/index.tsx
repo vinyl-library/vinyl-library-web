@@ -26,7 +26,6 @@ const RegisterSection: React.FC = () => {
 
     try {
       setIsLoading(true)
-      console.log(data)
       await axios.post('/api/auth/register', data)
       setIsLoading(false)
       toast.success('Successfully registered')
@@ -45,7 +44,7 @@ const RegisterSection: React.FC = () => {
           onSubmit={methods.handleSubmit(onSubmit)}
           className="w-full lg:w-1/2 order-1 lg:order-2 bg-white"
         >
-          <div className="items-center space-y-4 lg:px-12 lg:h-full h-screen px-10 relative z-10 lg:pt-10 2xl:pt-16">
+          <div className="items-center space-y-6 lg:px-12 lg:h-full h-screen px-10 relative z-10 lg:pt-10 2xl:pt-16">
             {activeStep === 1 && <FirstForm />}
             {activeStep === 2 && (
               <div className="flex flex-col pl-7 gap-2">
@@ -76,14 +75,14 @@ const RegisterSection: React.FC = () => {
                   className="flex items-center shadow-sm w-full lg:w-[80%] hover:shadow-lg shadow-buff hover:bg-opacity-90 rounded-lg text-[12px] md:text-[14px] lg:text-[18px] bg-crayola font-bold justify-center py-2 px-8"
                   disabled={isLoading}
                 >
-                  Submit
+                  Register
                 </button>
               )}
 
               <span className="text-tiger text-[10px] md:text-[12px] xl:text-[16px]">
                 Already have an account?{' '}
                 <Link
-                  href={''}
+                  href="/login"
                   className="font-semibold hover:text-crayola hover:underline"
                 >
                   Login

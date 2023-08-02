@@ -16,7 +16,6 @@ const LoginSection: React.FC = () => {
   const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
     try {
       setIsLoading(true)
-      console.log(data)
       await axios.post('/api/auth/login', data)
       setIsLoading(false)
       toast.success('Successfully logged in')
@@ -44,7 +43,7 @@ const LoginSection: React.FC = () => {
                 disabled={isLoading}
                 className="flex items-center shadow-sm w-full lg:w-[80%] hover:shadow-lg shadow-buff hover:bg-opacity-90 rounded-lg text-[12px] md:text-[14px] lg:text-[18px] bg-crayola font-bold justify-center py-2 px-8"
               >
-                Submit
+                Login
               </button>
 
               <span className="text-tiger">
