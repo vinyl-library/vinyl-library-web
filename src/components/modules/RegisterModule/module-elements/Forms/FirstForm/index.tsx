@@ -11,7 +11,7 @@ export const FirstForm: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-6 xl:gap-8 2xl:gap-10">
-      <span className="flex justify-center text-[16px] md:text-[18px] lg:text-[24px] font-black text-crayola">
+      <span className="flex justify-center text-[16px] md:text-[18px] lg:text-[24px] xl:text-[30px] 3xl:text-[36px] font-black text-crayola">
         Register
       </span>
 

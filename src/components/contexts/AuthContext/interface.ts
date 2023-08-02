@@ -9,6 +9,7 @@ export interface AuthContextProps {
   setIsLoggedIn: (isLoggedIn: boolean) => void
   user?: User
   httpRequest: <T>(props: HttpRequestProps) => Promise<T>
+  logout: () => Promise<void>
 }
 
 export interface httpRequestGetUserInterface {
