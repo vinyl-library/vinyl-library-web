@@ -34,13 +34,13 @@ export const FirstForm: React.FC = () => {
 
     if (username.trim() !== '') {
       const isUsernameAvailable = await checkUsernameAvailability(username)
-      if (!isUsernameAvailable) {
-        setError('username', { type: 'manual', message: 'Username not found' })
+      if (isUsernameAvailable) {
+        setError('username', { type: 'manual', message: 'Username has been used' })
       } else {
         clearErrors('username')
       }
     } else {
-      clearErrors('username')
+      setError('username', { type: 'manual', message: 'Please fill your username' })
     }
   }
 
@@ -52,7 +52,7 @@ export const FirstForm: React.FC = () => {
 
       <div className="flex flex-col gap-2 items-center justify-center w-full">
         <CustomTextInput
-          error={errors.username && 'Please fill your username'}
+          error={errors.username?.message}
           type="text"
           className="w-full"
           label="Username"
