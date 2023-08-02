@@ -12,6 +12,7 @@ export const SecondForm: React.FC = () => {
   const {
     setValue,
     formState: { errors },
+    clearErrors,
   } = useFormContext<SecondFormInput>()
 
   const { genre } = useRegisterContext()
@@ -26,7 +27,7 @@ export const SecondForm: React.FC = () => {
       setSelectedGenres(newSelected)
       setValue('favoriteGenre', newSelected)
     } else {
-      toast.error('Haloooo')
+      toast.error('You can only select up to five genres!')
     }
   }
 
@@ -39,7 +40,10 @@ export const SecondForm: React.FC = () => {
         {genre.map((genre) => {
           return (
             <Genre
-              onClick={() => handleGenreSelection(genre.id)}
+              onClick={() => {
+                clearErrors('favoriteGenre')
+                handleGenreSelection(genre.id)
+              }}
               key={genre.id}
               value={genre.name}
               isSelected={selectedGenres.includes(genre.id)}

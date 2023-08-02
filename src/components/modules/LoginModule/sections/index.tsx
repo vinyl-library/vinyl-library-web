@@ -16,7 +16,6 @@ const LoginSection: React.FC = () => {
   const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
     try {
       setIsLoading(true)
-      console.log(data)
       await axios.post('/api/auth/login', data)
       setIsLoading(false)
       toast.success('Successfully logged in')
@@ -28,12 +27,12 @@ const LoginSection: React.FC = () => {
   }
 
   return (
-    <section className="w-full lg:shadow-2xl lg:w-4/5 lg:bg-[#ffffff] h-screen lg:h-[90vh] lg:border border-gray-300 rounded-xl flex flex-wrap lg:flex-nowrap flex-col lg:flex-row justify-between group">
+    <section className="w-full shadow-lg lg:w-4/5 lg:bg-[#ffffff] h-screen lg:h-[90vh] lg:border border-gray-300 rounded-xl flex flex-wrap lg:flex-nowrap flex-col lg:flex-row justify-between group">
       <ProductSide imageUrl="/Login.png" />
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="w-full lg:w-1/2 lg:order-2 bg-white"
+          className="w-full lg:w-1/2 lg:order-2 bg-white rounded-r-xl"
         >
           <div className="items-center space-y-8 2xl:space-y-12 lg:px-12 h-screen lg:h-full px-10 relative z-10 pt-16">
             <LoginForm />
@@ -44,7 +43,7 @@ const LoginSection: React.FC = () => {
                 disabled={isLoading}
                 className="flex items-center shadow-sm w-full lg:w-[80%] hover:shadow-lg shadow-buff hover:bg-opacity-90 rounded-lg text-[12px] md:text-[14px] lg:text-[18px] bg-crayola font-bold justify-center py-2 px-8"
               >
-                Submit
+                Login
               </button>
 
               <span className="text-tiger">
