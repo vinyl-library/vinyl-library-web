@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
             },
             iconTheme: {
               primary: 'white',
-              secondary: 'green',
+              secondary: '46E72B',
             },
           },
           error: {
@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
             },
             iconTheme: {
               primary: 'white',
-              secondary: 'red',
+              secondary: 'FB5770',
             },
           },
         }}

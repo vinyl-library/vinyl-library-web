@@ -35,12 +35,6 @@ export const Footer: React.FC = () => {
               href="/"
               className="text-buff hover:brightness-110 text-[20px] font-bold"
             >
-              Home
-            </Link>
-            <Link
-              href="/"
-              className="text-buff hover:brightness-110 text-[20px] font-bold"
-            >
               Dashboard
             </Link>
           </>
