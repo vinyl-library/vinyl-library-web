@@ -27,7 +27,7 @@ export const SecondForm: React.FC = () => {
       setSelectedGenres(newSelected)
       setValue('favoriteGenre', newSelected)
     } else {
-      toast.error('Haloooo')
+      toast.error('You can only select up to five genres!')
     }
   }
 

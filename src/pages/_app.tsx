@@ -11,14 +11,22 @@ export default function App({ Component, pageProps }: AppProps) {
         toastOptions={{
           success: {
             style: {
-              background: 'green',
+              background: '#46E72B',
               color: 'white',
+            },
+            iconTheme: {
+              primary: 'white',
+              secondary: 'green',
             },
           },
           error: {
             style: {
-              background: 'red',
-              color: '#ffffff',
+              background: '#FB5770',
+              color: 'white',
+            },
+            iconTheme: {
+              primary: 'white',
+              secondary: 'red',
             },
           },
         }}
