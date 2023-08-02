@@ -9,22 +9,22 @@ export const HeroSection: React.FC = () => {
   }, [])
 
   return (
-    <section className="py-12">
+    <section>
       <div className="container mx-auto h-full">
-        <div className="flex flex-col gap-y-4 md:gap-0 xl:flex-row px-8 3xl:px-12 py-24 3xl:py-28 justify-between h-full">
+        <div className="flex flex-col gap-y-4 md:gap-0 xl:flex-row px-8 3xl:px-12 py-12 3xl:py-24 justify-between h-full">
           <div className="flex flex-col gap-y-4 pl-8">
-            <div className="flex flex-col gap-y-1 font-extrabold text-[36px] lg:text-[48px] 3xl:text-[60px]">
+            <div className="flex flex-col font-extrabold text-[36px] lg:text-[48px] 3xl:text-[60px]">
               <h1
                 className="text-crayola"
                 data-aos="fade-down"
-                data-aos-delay="400"
+                data-aos-delay="500"
               >
                 Discover New Worlds,
               </h1>
               <h1
                 className="text-buff"
                 data-aos="fade-down"
-                data-aos-delay="500"
+                data-aos-delay="600"
               >
                 Borrow the Stories
               </h1>
@@ -34,7 +34,7 @@ export const HeroSection: React.FC = () => {
               <p
                 className="max-w-[90%] text-bean text-[10px] lg:text-[16px] 3xl:text-[24px]"
                 data-aos="fade-down"
-                data-aos-delay="600"
+                data-aos-delay="700"
               >
                 Embrace the Magic of Words: Borrow Novels, Unleash Imagination!
                 Vinyl library offers a world of captivating stories across
