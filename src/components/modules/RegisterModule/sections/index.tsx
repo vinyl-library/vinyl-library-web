@@ -38,7 +38,7 @@ const RegisterSection: React.FC = () => {
 
   return (
     <section className="w-full lg:shadow-2xl lg:w-4/5 lg:bg-[#ffffff] h-screen lg:h-[90vh] lg:border border-gray-300 rounded-xl flex flex-wrap lg:flex-nowrap flex-col lg:flex-row justify-between group">
-      <ProductSide imageUrl="/Register.png" />
+      <ProductSide imageUrl="/Register2.png" />
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}

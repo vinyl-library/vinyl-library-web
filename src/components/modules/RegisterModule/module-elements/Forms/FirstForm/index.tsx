@@ -34,7 +34,7 @@ export const FirstForm: React.FC = () => {
 
     if (username.trim() !== '') {
       const isUsernameAvailable = await checkUsernameAvailability(username)
-      if (isUsernameAvailable) {
+      if (!isUsernameAvailable) {
         setError('username', {
           type: 'manual',
           message: 'Username has been used',
