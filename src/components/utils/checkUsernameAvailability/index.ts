@@ -1,5 +1,5 @@
-import { useAuthContext } from "@contexts";
-import { UsernameAvailabilityResponse } from "./interface";
+import { useAuthContext } from '@contexts'
+import { UsernameAvailabilityResponse } from './interface'
 
 export const checkUsernameAvailability = async (username: string) => {
   const { httpRequest } = useAuthContext()

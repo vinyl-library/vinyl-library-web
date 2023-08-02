@@ -1,4 +1,4 @@
-import { ErrorIcon } from "@icons"
+import { ErrorIcon } from '@icons'
 
 export const ErrorMessage: React.FC<{ message: string }> = ({ message }) => {
   return (

@@ -10,7 +10,7 @@ export const FirstForm: React.FC = () => {
     formState: { errors },
     setValue,
     setError,
-    clearErrors
+    clearErrors,
   } = useFormContext<FirstFormInputs>()
 
   const { httpRequest } = useAuthContext()
