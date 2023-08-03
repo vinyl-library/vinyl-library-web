@@ -111,10 +111,16 @@ const RegisterSection: React.FC = () => {
                   type="button"
                   className="flex items-center shadow-sm w-full lg:w-[80%] hover:shadow-lg shadow-buff hover:bg-opacity-90 rounded-lg text-[12px] md:text-[14px] lg:text-[18px] bg-crayola font-bold justify-center py-2 px-8"
                   onClick={async () => {
-                    if (
-                      await methods.trigger(['name', 'username', 'password'])
-                    ) {
-                      setActiveStep(2)
+                    if (methods.getValues('username').trim() === '') {
+                      methods.setError('username', {
+                        type: 'manual',
+                        message: 'Please fill your username',
+                      });
+                    } else {
+                      const isValid = await methods.trigger(['name', 'username', 'password']);
+                      if (isValid) {
+                        setActiveStep(2);
+                      }
                     }
                   }}
                   disabled={!isUsernameAvailable}
