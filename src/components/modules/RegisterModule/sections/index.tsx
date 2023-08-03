@@ -72,8 +72,9 @@ const RegisterSection: React.FC = () => {
       } else if (!username.match(usernamePattern)) {
         methods.setError('username', {
           type: 'manual',
-          message: 'Username should only contain alphanumeric characters, dots, and underscores',
-        });
+          message:
+            'Username should only contain alphanumeric characters, dots, and underscores',
+        })
       } else {
         methods.clearErrors('username')
       }
