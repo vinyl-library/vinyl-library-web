@@ -1,55 +1,18 @@
-import React, { ChangeEvent } from 'react'
-import { FirstFormInputs, UsernameAvailabilityResponse } from './interface'
+import React from 'react'
+import {
+  FirstFormInputs,
+  FirstFormProp,
+} from './interface'
 import { useFormContext } from 'react-hook-form'
 import CustomTextInput from 'src/components/elements/CustomTextInput'
-import { useAuthContext } from '@contexts'
 
-export const FirstForm: React.FC = () => {
+export const FirstForm: React.FC<FirstFormProp> = ({
+  handleUsernameChange,
+}) => {
   const {
     register,
     formState: { errors },
-    setValue,
-    setError,
-    clearErrors,
   } = useFormContext<FirstFormInputs>()
-
-  const { httpRequest } = useAuthContext()
-
-  const checkUsernameAvailability = async (username: string) => {
-    try {
-      const response = await httpRequest<UsernameAvailabilityResponse>({
-        method: 'get',
-        path: `api/user/check/${username}`,
-      })
-      console.log(response.data.status)
-      return response.data.status
-    } catch (err) {
-      return false
-    }
-  }
-
-  const handleUsernameChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    const username = event.target.value
-    setValue('username', username)
-
-    if (username.trim() !== '') {
-      const isUsernameAvailable = await checkUsernameAvailability(username)
-      if (!isUsernameAvailable) {
-        setError('username', {
-          type: 'manual',
-          message: 'Username has been used',
-        })
-      } else {
-        clearErrors('username')
-      }
-    } else {
-      setError('username', {
-        type: 'manual',
-        message: 'Please fill your username',
-      })
-    }
-  }
-
   return (
     <div className="flex flex-col gap-6 xl:gap-8 2xl:gap-10">
       <span className="flex justify-center text-[16px] md:text-[18px] lg:text-[24px] xl:text-[30px] 3xl:text-[36px] font-black text-crayola">

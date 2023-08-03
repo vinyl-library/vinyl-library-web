@@ -1,20 +1,27 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import Link from 'next/link'
 import ProductSide from '../../../elements/ProductSide'
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
-import { FirstFormInputs } from '../module-elements/Forms/FirstForm/interface'
+import {
+  FirstFormInputs,
+  UsernameAvailabilityResponse,
+} from '../module-elements/Forms/FirstForm/interface'
 import { SecondFormInput } from '../module-elements/Forms/SecondForm/interface'
 import { FirstForm, SecondForm } from '../module-elements/Forms'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { BackButton } from '@elements'
 import { useRouter } from 'next/router'
+import { useAuthContext } from '@contexts'
 
 const RegisterSection: React.FC = () => {
   const { ...methods } = useForm<FirstFormInputs & SecondFormInput>()
   const [activeStep, setActiveStep] = useState<number>(1)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isUsernameAvailable, setIsUsernameAvailable] = useState<boolean>(true)
   const router = useRouter()
+
+  const { httpRequest } = useAuthContext()
 
   const onSubmit: SubmitHandler<FirstFormInputs & SecondFormInput> = async (
     data
@@ -36,6 +43,42 @@ const RegisterSection: React.FC = () => {
     }
   }
 
+  const checkUsernameAvailability = async (username: string) => {
+    try {
+      const response = await httpRequest<UsernameAvailabilityResponse>({
+        method: 'get',
+        path: `api/user/check/${username}`,
+      })
+      console.log(response.data.status)
+      return response.data.status
+    } catch (err) {
+      return false
+    }
+  }
+
+  const handleUsernameChange = async (event: ChangeEvent<HTMLInputElement>) => {
+    const username = event.target.value
+    methods.setValue('username', username)
+
+    if (username.trim() !== '') {
+      const isUsernameAvailable = await checkUsernameAvailability(username)
+      setIsUsernameAvailable(isUsernameAvailable)
+      if (!isUsernameAvailable) {
+        methods.setError('username', {
+          type: 'manual',
+          message: 'Username has been used',
+        })
+      } else {
+        methods.clearErrors('username')
+      }
+    } else {
+      methods.setError('username', {
+        type: 'manual',
+        message: 'Please fill your username',
+      })
+    }
+  }
+
   return (
     <section className="w-full lg:shadow-2xl lg:w-4/5 lg:bg-[#ffffff] h-screen lg:h-[90vh] lg:border border-gray-300 rounded-xl flex flex-wrap lg:flex-nowrap flex-col lg:flex-row justify-between group">
       <ProductSide imageUrl="/Register2.png" />
@@ -45,7 +88,9 @@ const RegisterSection: React.FC = () => {
           className="w-full lg:w-1/2 order-1 lg:order-2 bg-white"
         >
           <div className="items-center space-y-6 lg:px-12 lg:h-full h-screen px-10 relative z-10 lg:pt-10 2xl:pt-16">
-            {activeStep === 1 && <FirstForm />}
+            {activeStep === 1 && (
+              <FirstForm handleUsernameChange={handleUsernameChange} />
+            )}
             {activeStep === 2 && (
               <div className="flex flex-col pl-7 gap-2">
                 <BackButton onClick={() => setActiveStep(1)} className="ml-4" />
@@ -65,6 +110,7 @@ const RegisterSection: React.FC = () => {
                       setActiveStep(2)
                     }
                   }}
+                  disabled={!isUsernameAvailable}
                 >
                   Next
                 </button>
