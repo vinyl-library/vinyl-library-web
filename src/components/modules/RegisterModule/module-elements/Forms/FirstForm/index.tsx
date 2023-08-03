@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-  FirstFormInputs,
-  FirstFormProp,
-} from './interface'
+import { FirstFormInputs, FirstFormProp } from './interface'
 import { useFormContext } from 'react-hook-form'
 import CustomTextInput from 'src/components/elements/CustomTextInput'
 
