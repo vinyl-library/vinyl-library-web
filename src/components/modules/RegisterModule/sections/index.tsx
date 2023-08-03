@@ -20,6 +20,7 @@ const RegisterSection: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isUsernameAvailable, setIsUsernameAvailable] = useState<boolean>(true)
   const router = useRouter()
+  const usernamePattern = /^[a-zA-Z0-9_.]+$/
 
   const { httpRequest } = useAuthContext()
 
@@ -68,6 +69,11 @@ const RegisterSection: React.FC = () => {
           type: 'manual',
           message: 'Username has been used',
         })
+      } else if (!username.match(usernamePattern)) {
+        methods.setError('username', {
+          type: 'manual',
+          message: 'Username should only contain alphanumeric characters, dots, and underscores',
+        });
       } else {
         methods.clearErrors('username')
       }
