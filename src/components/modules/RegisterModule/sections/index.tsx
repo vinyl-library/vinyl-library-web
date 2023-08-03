@@ -115,11 +115,15 @@ const RegisterSection: React.FC = () => {
                       methods.setError('username', {
                         type: 'manual',
                         message: 'Please fill your username',
-                      });
+                      })
                     } else {
-                      const isValid = await methods.trigger(['name', 'username', 'password']);
+                      const isValid = await methods.trigger([
+                        'name',
+                        'username',
+                        'password',
+                      ])
                       if (isValid) {
-                        setActiveStep(2);
+                        setActiveStep(2)
                       }
                     }
                   }}
