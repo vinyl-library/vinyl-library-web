@@ -1,5 +1,5 @@
-import React from "react"
+import React from 'react'
 
 export const MostPopularSection: React.FC = () => {
-  return (<section></section>)
+  return <section></section>
 }

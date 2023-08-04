@@ -4,7 +4,7 @@ export const LandingModule: React.FC = () => {
   return (
     <>
       <HeroSection />
-      <MostPopularSection/>
+      <MostPopularSection />
     </>
   )
 }
