@@ -18,7 +18,7 @@ const RegisterSection: React.FC = () => {
   const { ...methods } = useForm<FirstFormInputs & SecondFormInput>()
   const [activeStep, setActiveStep] = useState<number>(1)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [isUsernameAvailable, setIsUsernameAvailable] = useState<boolean>(true)
+  const [nextButtonDisabled, setNextButtonDisabled] = useState<boolean>(false)
   const router = useRouter()
   const usernamePattern = /^[a-zA-Z0-9_.]+$/
 
@@ -63,7 +63,7 @@ const RegisterSection: React.FC = () => {
 
     if (username.trim() !== '') {
       const isUsernameAvailable = await checkUsernameAvailability(username)
-      setIsUsernameAvailable(isUsernameAvailable)
+      setNextButtonDisabled(!isUsernameAvailable)
       if (!isUsernameAvailable) {
         methods.setError('username', {
           type: 'manual',
@@ -75,6 +75,7 @@ const RegisterSection: React.FC = () => {
           message:
             'Username should only contain alphanumeric characters, dots, and underscores',
         })
+        setNextButtonDisabled(!isUsernameAvailable)
       } else {
         methods.clearErrors('username')
       }
@@ -111,23 +112,24 @@ const RegisterSection: React.FC = () => {
                   type="button"
                   className="flex items-center shadow-sm w-full lg:w-[80%] hover:shadow-lg shadow-buff hover:bg-opacity-90 rounded-lg text-[12px] md:text-[14px] lg:text-[18px] bg-crayola font-bold justify-center py-2 px-8"
                   onClick={async () => {
+                    const isValid = await methods.trigger([
+                      'name',
+                      'username',
+                      'password',
+                    ])
+
+                    if (!isValid) setNextButtonDisabled(true)
+
                     if (methods.getValues('username').trim() === '') {
                       methods.setError('username', {
                         type: 'manual',
                         message: 'Please fill your username',
                       })
-                    } else {
-                      const isValid = await methods.trigger([
-                        'name',
-                        'username',
-                        'password',
-                      ])
-                      if (isValid) {
-                        setActiveStep(2)
-                      }
+                    } else if (isValid) {
+                      setActiveStep(2)
                     }
                   }}
-                  disabled={!isUsernameAvailable}
+                  disabled={nextButtonDisabled}
                 >
                   Next
                 </button>

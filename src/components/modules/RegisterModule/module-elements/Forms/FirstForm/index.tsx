@@ -37,7 +37,7 @@ export const FirstForm: React.FC<FirstFormProp> = ({
             maxLength: {
               value: 20,
               message: 'Name must not exceed 20 characters',
-            },
+            }
           })}
         />
         <CustomTextInput
