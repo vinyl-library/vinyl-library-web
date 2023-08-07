@@ -2,7 +2,7 @@ export interface MostPopularBooksResponse {
   message: string
   data: {
     books: Book[]
-  };
+  }
 }
 
 export interface Book {

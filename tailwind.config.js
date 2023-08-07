@@ -36,7 +36,5 @@ module.exports = {
       scale: ['active', 'group-hover'],
     },
   },
-  plugins: [
-    require('@tailwindcss/line-clamp'),
-  ],
+  plugins: [require('@tailwindcss/line-clamp')],
 }

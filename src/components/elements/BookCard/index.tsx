@@ -14,18 +14,18 @@ export const BookCard: React.FC<BookProps> = ({
   detailLink,
 }) => {
   const displayedGenres = genre
-  .filter((g) => g.name.length <= 10)
-  .slice(0, 2)
-  .map((g, index) => {
-    return (
-      <div
-        key={index}
-        className="bg-crayola rounded-full text-[6px] lg:text-[10px] 3xl:text-[12px] font-semibold px-2 py-1"
-      >
-        {g.name}
-      </div>
-    )
-  })
+    .filter((g) => g.name.length <= 10)
+    .slice(0, 2)
+    .map((g, index) => {
+      return (
+        <div
+          key={index}
+          className="bg-crayola rounded-full text-[6px] lg:text-[10px] 3xl:text-[12px] font-semibold px-2 py-1"
+        >
+          {g.name}
+        </div>
+      )
+    })
 
   return (
     <Link
@@ -33,13 +33,7 @@ export const BookCard: React.FC<BookProps> = ({
       className={`rounded-xl shadow-lg flex h-auto flex-col bg-${bgColor}`}
     >
       <div className="top-0 inset-x-0 rounded-t-xl h-30 flex justify-center">
-        <Image
-          src={coverUrl}
-          alt="img"
-          width={100}
-          height={100}
-          className=""
-        />
+        <Image src={coverUrl} alt="img" width={100} height={100} className="" />
       </div>
       <div className="flex flex-col p-4 gap-2 w-52">
         <span className="flex items-start italic text-black/60 text-[8px] lg:text-[12px] 3xl:text-[14px]">
