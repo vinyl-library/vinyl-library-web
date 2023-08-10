@@ -13,7 +13,6 @@ export const MostPopularSection: React.FC = () => {
         method: 'get',
         path: 'api/book',
       })
-      console.log(response.data.books)
       setPopularBooks(response.data.books)
     } catch (err) {
       console.error('Error fetching popular books:', err)

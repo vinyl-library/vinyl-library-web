@@ -9,7 +9,6 @@ export const checkUsernameAvailability = async (username: string) => {
       method: 'get',
       path: `api/user/check/${username}`,
     })
-    console.log(response.data.status)
     return response.data.status
   } catch (err) {
     return false

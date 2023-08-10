@@ -13,7 +13,6 @@ export const RecommendedForYouSection: React.FC = () => {
         method: 'get',
         path: 'api/book',
       })
-      console.log(response.data.books)
       setRecommendedBooks(response.data.books)
     } catch (err) {
       console.error('Error fetching popular books:', err)
