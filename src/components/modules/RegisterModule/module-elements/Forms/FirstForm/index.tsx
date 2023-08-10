@@ -1,14 +1,15 @@
 import React from 'react'
-import { FirstFormInputs } from './interface'
+import { FirstFormInputs, FirstFormProp } from './interface'
 import { useFormContext } from 'react-hook-form'
 import CustomTextInput from 'src/components/elements/CustomTextInput'
 
-export const FirstForm: React.FC = () => {
+export const FirstForm: React.FC<FirstFormProp> = ({
+  handleUsernameChange,
+}) => {
   const {
     register,
     formState: { errors },
   } = useFormContext<FirstFormInputs>()
-
   return (
     <div className="flex flex-col gap-6 xl:gap-8 2xl:gap-10">
       <span className="flex justify-center text-[16px] md:text-[18px] lg:text-[24px] xl:text-[30px] 3xl:text-[36px] font-black text-crayola">
@@ -17,20 +18,27 @@ export const FirstForm: React.FC = () => {
 
       <div className="flex flex-col gap-2 items-center justify-center w-full">
         <CustomTextInput
-          error={errors.username && 'Please fill your username'}
+          error={errors.username?.message}
           type="text"
           className="w-full"
           label="Username"
           placeholder="Your Username"
           {...register('username', { required: true })}
+          onChange={handleUsernameChange}
         />
         <CustomTextInput
-          error={errors.name && 'Please fill your fullname'}
+          error={errors.name?.message}
           type="text"
           className="w-full"
           label="Fullname"
           placeholder="Your fullname"
-          {...register('name', { required: true })}
+          {...register('name', {
+            required: 'Please fill your fullname',
+            maxLength: {
+              value: 20,
+              message: 'Name must not exceed 20 characters',
+            },
+          })}
         />
         <CustomTextInput
           error={errors.password && 'Please fill your password'}
