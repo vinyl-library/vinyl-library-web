@@ -43,9 +43,11 @@ export const BookCard: React.FC<BookProps> = ({
           {title}
         </span>
         <div className="flex gap-1">{displayedGenres}</div>
-        <div className="flex gap-2 items-center">
-          <AiFillStar color="#3B1500" />
-          <span className="text-bean">{rating}/5.0</span>
+        <div className="flex gap-1 items-center">
+          <AiFillStar size="15" color="#3B1500" />
+          <span className="text-bean text-[10px] lg:text-[13px] 3xl:text-[15px]">
+            {rating}/5.0
+          </span>
         </div>
       </div>
     </Link>

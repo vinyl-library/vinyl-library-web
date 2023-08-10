@@ -25,7 +25,11 @@ export const MostPopularSection: React.FC = () => {
   }, [])
 
   return (
-    <section className="flex flex-col gap-y-12 container mx-auto h-full bg-lace py-6 px-16 3xl:px-12">
+    <section
+      data-aos="fade-up"
+      data-aos-delay="150"
+      className="flex flex-col gap-y-12 container mx-auto h-full bg-lace py-10 px-16 3xl:px-12"
+    >
       <div className="flex justify-between font-bold">
         <h2 className="text-buff text-[30px] lg:text-[42px] 3xl:text-[54px]">
           Most Popular

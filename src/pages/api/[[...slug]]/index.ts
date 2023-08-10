@@ -12,15 +12,16 @@ export const config = {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (process.env.NEXT_PUBLIC_API) {
-      const result = await httpProxyMiddleware(req, res, {
+      await httpProxyMiddleware(req, res, {
         target: process.env.NEXT_PUBLIC_API,
       })
 
-      res.status(result.status ?? 200).send(result)
+      // res.status(result.status ?? 200).send(result)
     } else {
       res.status(HttpStatusCode.InternalServerError).send('API Not Set')
     }
   } catch (e: any) {
+    console.log(e)
     res.status(e.response.status).send(e)
   }
 }
