@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 
 export const usePlaceholderWriter = (words: string[]) => {
   const [currentView, setCurrentView] = useState('')
-
   const [currentParams, setCurrentParams] = useState<{
     viewIndex: number
     wordIndex: number
