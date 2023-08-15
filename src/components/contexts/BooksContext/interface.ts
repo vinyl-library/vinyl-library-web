@@ -1,10 +1,17 @@
 import { ReactNode } from 'react'
 
 export interface BooksContextInterface {
+  selectedGenres: string[]
+  genres: Genre[]
   books: Book[]
   pagination?: Pagination
   setCurrentPage: (page: number) => void
   setKeywordFilter: (keyword: string) => void
+  setSelectedGenres: (genre: string[]) => void
+  setRatingMin: (rating: number) => void
+  setRatingMax: (rating: number) => void
+  setStock: (stock: string) => void
+  setOrderBy: (orderBy: string) => void
 }
 
 export interface BooksContextProviderProps {
@@ -21,7 +28,13 @@ export type Book = {
 }
 
 export type Genre = {
+  id: string
   name: string
+}
+export interface GetAllGenresResponseInterface {
+  data: {
+    genre: Genre[]
+  }
 }
 
 export interface GetAllBooksResponseInterface {
