@@ -1,8 +1,9 @@
 import { ReactNode } from 'react'
 
 export interface BooksContextInterface {
+  sortBy: string
+  orderBy: string
   selectedGenres: string[]
-  genres: Genre[]
   books: Book[]
   pagination?: Pagination
   setCurrentPage: (page: number) => void
@@ -12,6 +13,7 @@ export interface BooksContextInterface {
   setRatingMax: (rating: number) => void
   setStock: (stock: string) => void
   setOrderBy: (orderBy: string) => void
+  setSortBy: (sortBy: string) => void
 }
 
 export interface BooksContextProviderProps {

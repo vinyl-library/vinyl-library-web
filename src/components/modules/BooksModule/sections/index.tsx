@@ -1,14 +1,20 @@
 import { useBooksContext } from '@contexts'
-import { BookCard } from '@elements'
-import React, { useEffect, useState } from 'react'
+import { BookCard, Select } from '@elements'
+import React, { useState, useEffect } from 'react'
 import { HiArrowLeft, HiArrowRight } from 'react-icons/hi'
 import { IoSearchSharp } from 'react-icons/io5'
+import {
+  Genre,
+  GetAllGenresResponseInterface,
+} from 'src/components/contexts/BooksContext/interface'
+import { useAuthContext } from '@contexts'
+import { useDebouncedCallback } from 'use-debounce'
+import { ORDERBY, SORTBY } from './constant'
 
 export const BooksSection: React.FC = () => {
   const {
     books,
     pagination,
-    genres,
     selectedGenres,
     setCurrentPage,
     setKeywordFilter,
@@ -16,12 +22,29 @@ export const BooksSection: React.FC = () => {
     setStock,
     setRatingMin,
     setRatingMax,
+    setOrderBy,
+    setSortBy,
   } = useBooksContext()
   const [keywordInput, setKeywordInput] = useState<string>('')
-  // const [genreInput, setGenreInput] = useState<string[]>([])
-  const [stockInput, setStockInput] = useState<string>('')
+  const [stockInput, setStockInput] = useState<string>('available')
   const [minRatingInput, setMinRatingInput] = useState<number>(0)
-  const [maxRatingInput, setMaxRatingInput] = useState<number>(0)
+  const [maxRatingInput, setMaxRatingInput] = useState<number>(5)
+  const [genres, setGenres] = useState<Genre[]>([])
+  const { httpRequest } = useAuthContext()
+
+  const fetchGenre = async () => {
+    const { data } = await httpRequest<GetAllGenresResponseInterface>({
+      method: 'get',
+      path: '/api/genre',
+    })
+
+    const { genre } = data
+    setGenres(genre)
+  }
+
+  useEffect(() => {
+    fetchGenre()
+  }, [])
 
   const handleGenreCheckboxChange = (genreId: string) => {
     if (selectedGenres.includes(genreId)) {
@@ -52,9 +75,9 @@ export const BooksSection: React.FC = () => {
     setRatingMax(maxValue)
   }
 
-  useEffect(() => {
-    console.log(minRatingInput)
-  }, [minRatingInput])
+  const debounced = useDebouncedCallback((keyword: string) => {
+    setKeywordFilter(keyword)
+  }, 500)
 
   return (
     <section className="flex w-full">
@@ -70,7 +93,7 @@ export const BooksSection: React.FC = () => {
                     type="checkbox"
                     value={genre.id}
                     onChange={() => handleGenreCheckboxChange(genre.id)}
-                    className="rounded bg-crayola"
+                    className="cursor-pointer rounded bg-crayola"
                   />
                   <label>{genre.name}</label>
                 </div>
@@ -88,6 +111,7 @@ export const BooksSection: React.FC = () => {
                 value="available"
                 checked={stockInput === 'available'}
                 onChange={() => handleStockRadioChange('available')}
+                className="cursor-pointer"
               />
               <label>Available</label>
             </div>
@@ -98,6 +122,7 @@ export const BooksSection: React.FC = () => {
                 value="all"
                 checked={stockInput === 'all'}
                 onChange={() => handleStockRadioChange('all')}
+                className="cursor-pointer"
               />
               <label>All</label>
             </div>
@@ -115,6 +140,7 @@ export const BooksSection: React.FC = () => {
                 max="5"
                 value={minRatingInput}
                 onChange={handleMinRatingChange}
+                className="cursor-pointer"
               />
             </div>
 
@@ -126,19 +152,21 @@ export const BooksSection: React.FC = () => {
                 max="5"
                 value={maxRatingInput}
                 onChange={handleMaxRatingChange}
+                className="cursor-pointer"
               />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col gap-y-8 px-12">
+      <div className="flex flex-col gap-y-8 px-12 w-full">
         <div className="flex gap-x-4 rounded-full w-80 px-4 py-2 text-bean focus:outline-crayola bg-buff bg-opacity-20 focus:bg-opacity-10 items-center">
           <IoSearchSharp color="#FB5770" size="20" />
           <input
             className="bg-transparent w-full text-bean focus:outline-none"
             onChange={(e) => {
               setKeywordInput(e.target.value)
+              debounced(e.target.value)
             }}
             type="text"
             onKeyDown={(e) => {
@@ -147,16 +175,16 @@ export const BooksSection: React.FC = () => {
           />
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex justify-between w-full">
           <span className="text-tiger text-lg">
             Showing {pagination?.from}-{pagination?.to} from {pagination?.total}{' '}
             results
           </span>
 
-          <select className="bg-crayola rounded-lg focus:outline-none px-4 py-2">
-            <option value="asc">A to Z</option>
-            <option value="desc">Z to A</option>
-          </select>
+          <div className="flex items-center gap-x-6 3xl:gap-x-8">
+            <Select options={SORTBY} onChange={(value) => setSortBy(value)} />
+            <Select options={ORDERBY} onChange={(value) => setOrderBy(value)} />
+          </div>
         </div>
 
         <div className="flex flex-wrap gap-6">
