@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 export interface BooksContextInterface {
   sortBy: string
   orderBy: string
+  keywordFilter: string
   selectedGenres: string[]
   books: Book[]
   pagination?: Pagination

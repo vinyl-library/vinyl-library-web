@@ -7,6 +7,7 @@ import {
   Pagination,
 } from './interface'
 import { useAuthContext } from '../AuthContext'
+import { useRouter } from 'next/router'
 
 const BooksContext = createContext({} as BooksContextInterface)
 
@@ -27,10 +28,9 @@ export const BooksContextProvider: React.FC<BooksContextProviderProps> = ({
   const [sortBy, setSortBy] = useState<string>('title')
   const [keywordFilter, setKeywordFilter] = useState<string>('')
 
+  const router = useRouter()
+
   const fetchBooks = async () => {
-    console.log(
-      `/api/book?page=${currentPage}&keyword=${keywordFilter}&stock=${stock}&genres=${selectedGenres}&ratingMin=${ratingMin}&ratingMax=${ratingMax}&orderBy=${orderBy}&sortBy=${sortBy}`
-    )
     const { data } = await httpRequest<GetAllBooksResponseInterface>({
       method: 'get',
       path: `/api/book?page=${currentPage}&keyword=${keywordFilter}&stock=${stock}&genres=${selectedGenres}&ratingMin=${ratingMin}&ratingMax=${ratingMax}&orderBy=${orderBy}&sortBy=${sortBy}`,
@@ -43,6 +43,11 @@ export const BooksContextProvider: React.FC<BooksContextProviderProps> = ({
   }
 
   useEffect(() => {
+    const keywordFromQuery = router.query.keyword as string
+    if (keywordFromQuery) {
+      setKeywordFilter(keywordFromQuery)
+    }
+
     fetchBooks()
   }, [
     currentPage,
@@ -53,6 +58,7 @@ export const BooksContextProvider: React.FC<BooksContextProviderProps> = ({
     ratingMax,
     orderBy,
     sortBy,
+    router.query.keyword
   ])
 
   const contextValue = {
@@ -72,6 +78,7 @@ export const BooksContextProvider: React.FC<BooksContextProviderProps> = ({
     setOrderBy,
     sortBy,
     setSortBy,
+    keywordFilter,
   }
 
   return (

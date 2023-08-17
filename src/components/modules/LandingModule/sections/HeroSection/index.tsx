@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { IoSearchSharp } from 'react-icons/io5'
 import { usePlaceholderWriter } from '@hooks'
+import { useRouter } from 'next/router'
+import { useBooksContext } from '@contexts'
 
 export const HeroSection: React.FC = () => {
   const searchPlaceholder = usePlaceholderWriter([
@@ -9,10 +11,29 @@ export const HeroSection: React.FC = () => {
     'Bonaventura Galang',
   ])
 
+  const router = useRouter()
+  const [searchInput, setSearchInput] = useState('')
+  const {
+    keywordFilter,
+    setKeywordFilter
+  } = useBooksContext()
+
+  const handleSearchSubmit = () => {
+    try {
+      router.push(`/books?keyword=${encodeURIComponent(searchInput)}`)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    setKeywordFilter(searchInput)
+  }, [searchInput, keywordFilter])
+
   return (
     <section className="flex itemes-center w-full">
       <div className=" h-full">
-        <div className="flex flex-col gap-y-4 md:gap-0 xl:flex-row px-8 3xl:px-12 py-6 justify-between h-full w-full">
+        <div className="flex flex-col gap-y-4 md:gap-0 xl:flex-row px-8 3xl:px-20 py-6 justify-between h-full w-full">
           <div className="flex flex-col gap-y-6 pl-8 3xl:pl-10 max-w-[50%]">
             <div className="flex flex-col gap-0 font-extrabold text-[36px] lg:text-[48px] 3xl:text-[60px]">
               <h1
@@ -43,7 +64,7 @@ export const HeroSection: React.FC = () => {
               </p>
             </div>
 
-            <div
+            <form onSubmit={handleSearchSubmit}
               className="flex justify-between rounded-full w-[90%] bg-buff bg-opacity-20 shadow-md px-5 py-3 mt-6"
               data-aos="fade-down"
               data-aos-delay="800"
@@ -54,13 +75,15 @@ export const HeroSection: React.FC = () => {
                   type="search"
                   className="bg-transparent w-full text-bean focus:outline-none"
                   placeholder={searchPlaceholder}
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
                 />
               </div>
 
-              <button className="flex items-center bg-crayola hover:bg-opacity-80 rounded-full font-semibold px-4 py-2">
+              <button type="submit" className="flex items-center bg-crayola hover:bg-opacity-80 rounded-full font-semibold px-4 py-2">
                 Search
               </button>
-            </div>
+            </form>
           </div>
 
           <div
