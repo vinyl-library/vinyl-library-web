@@ -10,7 +10,7 @@ export const HeroSection: React.FC = () => {
   ])
 
   return (
-    <section className='flex itemes-center w-full'>
+    <section className="flex itemes-center w-full">
       <div className=" h-full">
         <div className="flex flex-col gap-y-4 md:gap-0 xl:flex-row px-8 3xl:px-12 py-6 justify-between h-full w-full">
           <div className="flex flex-col gap-y-6 pl-8 3xl:pl-10 max-w-[50%]">
