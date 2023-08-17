@@ -84,8 +84,16 @@ export const BooksSection: React.FC = () => {
         <div className="flex flex-col gap-y-3">
           <span className="flex text-xl font-semibold">Rating</span>
           <div className="flex flex-col gap-y-1">
-            <RatingFilter label='Minimum (0-5)' value={minRatingInput} onChange={handleMinRatingChange}/>
-            <RatingFilter label='Maximum (0-5)' value={maxRatingInput} onChange={handleMaxRatingChange}/>
+            <RatingFilter
+              label="Minimum (0-5)"
+              value={minRatingInput}
+              onChange={handleMinRatingChange}
+            />
+            <RatingFilter
+              label="Maximum (0-5)"
+              value={maxRatingInput}
+              onChange={handleMaxRatingChange}
+            />
           </div>
         </div>
       </div>

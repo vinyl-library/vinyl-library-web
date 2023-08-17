@@ -1,9 +1,9 @@
-import { RatingFilterProps } from "./interface";
+import { RatingFilterProps } from './interface'
 
 export const RatingFilter: React.FC<RatingFilterProps> = ({
   label,
   value,
-  onChange
+  onChange,
 }) => {
   return (
     <div className="flex flex-col gap-y-2">
@@ -14,7 +14,8 @@ export const RatingFilter: React.FC<RatingFilterProps> = ({
         max="5"
         value={value}
         onChange={onChange}
-        className="cursor-pointer" />
+        className="cursor-pointer"
+      />
     </div>
   )
 }
