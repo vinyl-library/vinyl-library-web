@@ -11,6 +11,7 @@ import { useAuthContext } from '@contexts'
 import { useDebouncedCallback } from 'use-debounce'
 import { ORDERBY, SORTBY } from './constant'
 import { GenreFilter } from '../module-elements'
+import { StockFilter } from '../module-elements/StockFilter'
 
 export const BooksSection: React.FC = () => {
   const {
@@ -18,14 +19,12 @@ export const BooksSection: React.FC = () => {
     pagination,
     setCurrentPage,
     setKeywordFilter,
-    setStock,
     setRatingMin,
     setRatingMax,
     setOrderBy,
     setSortBy,
   } = useBooksContext()
   const [keywordInput, setKeywordInput] = useState<string>('')
-  const [stockInput, setStockInput] = useState<string>('available')
   const [minRatingInput, setMinRatingInput] = useState<number>(0)
   const [maxRatingInput, setMaxRatingInput] = useState<number>(5)
   const [genres, setGenres] = useState<Genre[]>([])
@@ -44,11 +43,6 @@ export const BooksSection: React.FC = () => {
   useEffect(() => {
     fetchGenre()
   }, [])
-
-  const handleStockRadioChange = (value: string) => {
-    setStockInput(value)
-    setStock(value)
-  }
 
   const handleMinRatingChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -82,27 +76,8 @@ export const BooksSection: React.FC = () => {
         <div className="flex flex-col gap-y-3">
           <span className="flex text-xl font-semibold">Stock</span>
           <div className="flex flex-col gap-y-1">
-            <div className="flex items-center gap-x-2">
-              <input
-                type="radio"
-                value="available"
-                checked={stockInput === 'available'}
-                onChange={() => handleStockRadioChange('available')}
-                className="cursor-pointer"
-              />
-              <label>Available</label>
-            </div>
-
-            <div className="flex items-center gap-x-2">
-              <input
-                type="radio"
-                value="all"
-                checked={stockInput === 'all'}
-                onChange={() => handleStockRadioChange('all')}
-                className="cursor-pointer"
-              />
-              <label>All</label>
-            </div>
+            <StockFilter label='Available' value='available' />
+            <StockFilter label='All' value='all' />
           </div>
         </div>
 
