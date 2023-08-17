@@ -10,7 +10,7 @@ import {
 import { useAuthContext } from '@contexts'
 import { useDebouncedCallback } from 'use-debounce'
 import { ORDERBY, SORTBY } from './constant'
-import { GenreFilter } from '../module-elements'
+import { GenreFilter, RatingFilter } from '../module-elements'
 import { StockFilter } from '../module-elements/StockFilter'
 
 export const BooksSection: React.FC = () => {
@@ -84,29 +84,8 @@ export const BooksSection: React.FC = () => {
         <div className="flex flex-col gap-y-3">
           <span className="flex text-xl font-semibold">Rating</span>
           <div className="flex flex-col gap-y-1">
-            <div className="flex flex-col gap-y-2">
-              <label>Minimum (0-5)</label>
-              <input
-                type="range"
-                min="0"
-                max="5"
-                value={minRatingInput}
-                onChange={handleMinRatingChange}
-                className="cursor-pointer"
-              />
-            </div>
-
-            <div className="flex flex-col gap-y-2">
-              <label>Maximum (0-5)</label>
-              <input
-                type="range"
-                min="0"
-                max="5"
-                value={maxRatingInput}
-                onChange={handleMaxRatingChange}
-                className="cursor-pointer"
-              />
-            </div>
+            <RatingFilter label='Minimum (0-5)' value={minRatingInput} onChange={handleMinRatingChange}/>
+            <RatingFilter label='Maximum (0-5)' value={maxRatingInput} onChange={handleMaxRatingChange}/>
           </div>
         </div>
       </div>
