@@ -13,8 +13,9 @@ export const HeroSection: React.FC = () => {
   const router = useRouter()
   const [searchInput, setSearchInput] = useState('')
 
-  const handleSearchSubmit = () => {
+  const handleSearchSubmit = (e: React.FormEvent) => {
     try {
+      e.preventDefault()
       router.push(`/books?keyword=${encodeURIComponent(searchInput)}`)
     } catch (err) {
       console.log(err)
