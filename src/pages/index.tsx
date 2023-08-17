@@ -4,11 +4,11 @@ import { LandingModule } from '@modules'
 import { BooksContextProvider } from '@contexts'
 
 const Home: NextPage = () => {
-	return (
-		<BooksContextProvider>
-			<LandingModule />
-		</BooksContextProvider>
-	)
+  return (
+    <BooksContextProvider>
+      <LandingModule />
+    </BooksContextProvider>
+  )
 }
 
 export default Home

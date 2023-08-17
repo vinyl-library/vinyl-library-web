@@ -13,10 +13,7 @@ export const HeroSection: React.FC = () => {
 
   const router = useRouter()
   const [searchInput, setSearchInput] = useState('')
-  const {
-    keywordFilter,
-    setKeywordFilter
-  } = useBooksContext()
+  const { keywordFilter, setKeywordFilter } = useBooksContext()
 
   const handleSearchSubmit = () => {
     try {
@@ -64,7 +61,8 @@ export const HeroSection: React.FC = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSearchSubmit}
+            <form
+              onSubmit={handleSearchSubmit}
               className="flex justify-between rounded-full w-[90%] bg-buff bg-opacity-20 shadow-md px-5 py-3 mt-6"
               data-aos="fade-down"
               data-aos-delay="800"
@@ -80,7 +78,10 @@ export const HeroSection: React.FC = () => {
                 />
               </div>
 
-              <button type="submit" className="flex items-center bg-crayola hover:bg-opacity-80 rounded-full font-semibold px-4 py-2">
+              <button
+                type="submit"
+                className="flex items-center bg-crayola hover:bg-opacity-80 rounded-full font-semibold px-4 py-2"
+              >
                 Search
               </button>
             </form>

@@ -58,7 +58,7 @@ export const BooksContextProvider: React.FC<BooksContextProviderProps> = ({
     ratingMax,
     orderBy,
     sortBy,
-    router.query.keyword
+    router.query.keyword,
   ])
 
   const contextValue = {
