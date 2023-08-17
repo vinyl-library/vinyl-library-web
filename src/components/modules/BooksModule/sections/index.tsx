@@ -10,15 +10,14 @@ import {
 import { useAuthContext } from '@contexts'
 import { useDebouncedCallback } from 'use-debounce'
 import { ORDERBY, SORTBY } from './constant'
+import { GenreFilter } from '../module-elements'
 
 export const BooksSection: React.FC = () => {
   const {
     books,
     pagination,
-    selectedGenres,
     setCurrentPage,
     setKeywordFilter,
-    setSelectedGenres,
     setStock,
     setRatingMin,
     setRatingMax,
@@ -45,14 +44,6 @@ export const BooksSection: React.FC = () => {
   useEffect(() => {
     fetchGenre()
   }, [])
-
-  const handleGenreCheckboxChange = (genreId: string) => {
-    if (selectedGenres.includes(genreId)) {
-      setSelectedGenres(selectedGenres.filter((id) => id !== genreId))
-    } else {
-      setSelectedGenres([...selectedGenres, genreId])
-    }
-  }
 
   const handleStockRadioChange = (value: string) => {
     setStockInput(value)
@@ -85,21 +76,7 @@ export const BooksSection: React.FC = () => {
         <span className="flex font-bold text-xl">Filter</span>
         <div className="flex flex-col gap-y-3">
           <span className="flex text-xl font-semibold">Genre</span>
-          <div className="flex flex-col gap-y-1">
-            {genres.map((genre) => {
-              return (
-                <div className="flex items-center gap-x-2" key={genre.id}>
-                  <input
-                    type="checkbox"
-                    value={genre.id}
-                    onChange={() => handleGenreCheckboxChange(genre.id)}
-                    className="cursor-pointer rounded bg-crayola"
-                  />
-                  <label>{genre.name}</label>
-                </div>
-              )
-            })}
-          </div>
+          <GenreFilter genres={genres} />
         </div>
 
         <div className="flex flex-col gap-y-3">
