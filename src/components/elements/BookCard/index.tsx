@@ -35,7 +35,7 @@ export const BookCard: React.FC<BookProps> = ({
       <div className="top-0 inset-x-0 rounded-t-xl h-30 flex justify-center">
         <Image src={coverUrl} alt="img" width={100} height={100} className="" />
       </div>
-      <div className="flex flex-col p-4 gap-2 w-52 h-40">
+      <div className="flex flex-col p-4 gap-2 w-52 h-40 3xl:h-48">
         <span className="flex items-start italic text-black/60 text-[8px] lg:text-[12px] 3xl:text-[14px]">
           {author}
         </span>

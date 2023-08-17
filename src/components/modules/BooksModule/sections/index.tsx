@@ -111,7 +111,7 @@ export const BooksSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-y-8 px-12 w-full">
+      <div className="flex flex-col gap-y-8 px-12 3xl:px-20 w-full">
         <div className="flex gap-x-4 rounded-full w-80 px-4 py-2 text-bean focus:outline-crayola bg-buff bg-opacity-20 focus:bg-opacity-10 items-center">
           <IoSearchSharp color="#FB5770" size="20" />
           <input

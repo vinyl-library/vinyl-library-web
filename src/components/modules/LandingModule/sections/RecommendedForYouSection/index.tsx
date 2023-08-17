@@ -27,7 +27,7 @@ export const RecommendedForYouSection: React.FC = () => {
     <section
       data-aos="fade-up"
       data-aos-delay="600"
-      className="flex flex-col gap-y-12 container mx-auto h-full bg-powder py-10 px-16 3xl:px-12"
+      className="flex flex-col gap-y-12 mx-auto h-full bg-powder py-10 px-16 3xl:px-24"
     >
       <div className="flex justify-between font-bold">
         <h2 className="text-buff text-[30px] lg:text-[42px] 3xl:text-[54px]">
@@ -38,7 +38,7 @@ export const RecommendedForYouSection: React.FC = () => {
         </button>
       </div>
 
-      <div className="flex overflow-auto gap-x-2 pb-6">
+      <div className="flex overflow-auto gap-x-2 2xl:gap-x-3 3xl:gap-x-4 pb-6">
         {recommendedBooks.map((book) => (
           <BookCard
             key={book.id}
