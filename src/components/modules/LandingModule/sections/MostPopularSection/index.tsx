@@ -34,7 +34,10 @@ export const MostPopularSection: React.FC = () => {
         <h2 className="text-buff text-[30px] lg:text-[42px] 3xl:text-[54px]">
           Most Popular
         </h2>
-        <Link href="/books" className="text-bean text-[10px] lg:text-[22px] 3xl:text-[34px] hover:text-tiger hover:underline">
+        <Link
+          href="/books"
+          className="text-bean text-[10px] lg:text-[22px] 3xl:text-[34px] hover:text-tiger hover:underline"
+        >
           See All
         </Link>
       </div>
