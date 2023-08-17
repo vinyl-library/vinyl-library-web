@@ -76,8 +76,8 @@ export const BooksSection: React.FC = () => {
         <div className="flex flex-col gap-y-3">
           <span className="flex text-xl font-semibold">Stock</span>
           <div className="flex flex-col gap-y-1">
-            <StockFilter label='Available' value='available' />
-            <StockFilter label='All' value='all' />
+            <StockFilter label="Available" value="available" />
+            <StockFilter label="All" value="all" />
           </div>
         </div>
 
