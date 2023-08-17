@@ -2,6 +2,7 @@ import { useAuthContext } from '@contexts'
 import { BookCard } from '@elements'
 import React, { useEffect, useState } from 'react'
 import { Book, MostPopularBooksResponse } from './interface'
+import Link from 'next/link'
 
 export const MostPopularSection: React.FC = () => {
   const [popularBooks, setPopularBooks] = useState<Book[]>([])
@@ -33,9 +34,9 @@ export const MostPopularSection: React.FC = () => {
         <h2 className="text-buff text-[30px] lg:text-[42px] 3xl:text-[54px]">
           Most Popular
         </h2>
-        <button className="text-bean text-[10px] lg:text-[22px] 3xl:text-[34px] hover:text-tiger hover:underline">
+        <Link href="/books" className="text-bean text-[10px] lg:text-[22px] 3xl:text-[34px] hover:text-tiger hover:underline">
           See All
-        </button>
+        </Link>
       </div>
 
       <div className="flex overflow-auto gap-x-2 2xl:gap-x-3 3xl:gap-x-4 pb-6">
