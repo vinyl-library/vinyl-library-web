@@ -43,11 +43,6 @@ export const BooksContextProvider: React.FC<BooksContextProviderProps> = ({
   }
 
   useEffect(() => {
-    const keywordFromQuery = router.query.keyword as string
-    if (keywordFromQuery) {
-      setKeywordFilter(keywordFromQuery)
-    }
-
     fetchBooks()
   }, [
     currentPage,
@@ -58,8 +53,14 @@ export const BooksContextProvider: React.FC<BooksContextProviderProps> = ({
     ratingMax,
     orderBy,
     sortBy,
-    router.query.keyword,
   ])
+
+  useEffect(() => {
+    const keywordFromQuery = router.query.keyword as string
+    if (keywordFromQuery) {
+      setKeywordFilter(keywordFromQuery)
+    }
+  }, [keywordFilter, router.query.keyword])
 
   const contextValue = {
     books,

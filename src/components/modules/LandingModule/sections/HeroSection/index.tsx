@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { IoSearchSharp } from 'react-icons/io5'
 import { usePlaceholderWriter } from '@hooks'
 import { useRouter } from 'next/router'
-import { useBooksContext } from '@contexts'
 
 export const HeroSection: React.FC = () => {
   const searchPlaceholder = usePlaceholderWriter([
@@ -13,7 +12,6 @@ export const HeroSection: React.FC = () => {
 
   const router = useRouter()
   const [searchInput, setSearchInput] = useState('')
-  const { keywordFilter, setKeywordFilter } = useBooksContext()
 
   const handleSearchSubmit = () => {
     try {
@@ -22,10 +20,6 @@ export const HeroSection: React.FC = () => {
       console.log(err)
     }
   }
-
-  useEffect(() => {
-    setKeywordFilter(searchInput)
-  }, [searchInput, keywordFilter])
 
   return (
     <section className="flex itemes-center w-full">
