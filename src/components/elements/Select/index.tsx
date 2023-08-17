@@ -23,8 +23,9 @@ export const Select: React.FC<SelectProps> = ({
       >
         <span className="pr-6">{selectedOption}</span>
         <div
-          className={`transform transition-transform ${isDropdownOpen ? 'rotate-180' : ''
-            }`}
+          className={`transform transition-transform ${
+            isDropdownOpen ? 'rotate-180' : ''
+          }`}
         >
           <svg
             className="w-4 h-4 ml-2"
