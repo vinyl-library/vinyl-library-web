@@ -27,7 +27,7 @@ export const MostPopularSection: React.FC = () => {
   return (
     <section
       data-aos="fade-up"
-      data-aos-delay="500"
+      data-aos-delay="300"
       className="flex flex-col gap-y-12 h-full bg-lace py-12 px-16 3xl:px-24 w-full"
     >
       <div className="flex justify-between font-bold">

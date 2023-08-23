@@ -12,7 +12,7 @@ export const RecommendedForYouSection: React.FC = () => {
     try {
       const response = await httpRequest<MostPopularBooksResponse>({
         method: 'get',
-        path: 'api/book',
+        path: 'api/book/recommended',
       })
       setRecommendedBooks(response.data.books)
     } catch (err) {
@@ -27,7 +27,7 @@ export const RecommendedForYouSection: React.FC = () => {
   return (
     <section
       data-aos="fade-up"
-      data-aos-delay="600"
+      data-aos-delay="500"
       className="flex flex-col gap-y-12 mx-auto h-full bg-powder py-12 px-16 3xl:px-24"
     >
       <div className="flex justify-between font-bold">

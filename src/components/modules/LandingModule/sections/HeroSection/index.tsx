@@ -26,19 +26,18 @@ export const HeroSection: React.FC = () => {
     <section className="flex itemes-center w-full">
       <div className=" h-full">
         <div className="flex flex-col gap-y-4 md:gap-0 xl:flex-row px-8 3xl:px-20 py-6 justify-between h-full w-full">
-          <div className="flex flex-col gap-y-6 pl-8 3xl:pl-10 max-w-[50%]">
+          <div
+            data-aos="fade-down"
+            data-aos-delay="100"
+            className="flex flex-col gap-y-6 pl-8 3xl:pl-10 max-w-[50%]">
             <div className="flex flex-col gap-0 font-extrabold text-[36px] lg:text-[48px] 3xl:text-[60px]">
               <h1
                 className="text-crayola"
-                data-aos="fade-down"
-                data-aos-delay="500"
               >
                 Discover New Worlds,
               </h1>
               <h1
                 className="text-buff"
-                data-aos="fade-down"
-                data-aos-delay="600"
               >
                 Borrow the Stories
               </h1>
@@ -47,8 +46,6 @@ export const HeroSection: React.FC = () => {
             <div className="flex">
               <p
                 className="max-w-[90%] text-bean text-[10px] lg:text-[16px] 3xl:text-[24px]"
-                data-aos="fade-down"
-                data-aos-delay="700"
               >
                 Embrace the Magic of Words: Borrow Novels, Unleash Imagination!
                 Vinyl library offers a world of captivating stories across
@@ -59,8 +56,6 @@ export const HeroSection: React.FC = () => {
             <form
               onSubmit={handleSearchSubmit}
               className="flex justify-between rounded-full w-[90%] bg-buff bg-opacity-20 shadow-md px-5 py-3 mt-6"
-              data-aos="fade-down"
-              data-aos-delay="800"
             >
               <div className="flex gap-x-4 items-center w-full">
                 <IoSearchSharp color="#FB5770" size="20" />
@@ -85,7 +80,7 @@ export const HeroSection: React.FC = () => {
           <div
             className="flex justify-center items-start h-full w-full"
             data-aos="fade-up"
-            data-aos-delay="900"
+            data-aos-delay="100"
           >
             <div className="right-0 bottom-0 flex items-center lg:justify-center w-full opacity-50 lg:opacity-100">
               <Image
