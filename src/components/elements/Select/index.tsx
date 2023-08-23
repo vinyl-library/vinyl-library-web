@@ -3,7 +3,6 @@ import { SelectProps } from './interface'
 
 export const Select: React.FC<SelectProps> = ({
   options,
-  className,
   onChange,
 }) => {
   const [selectedValue, setSelectedValue] = useState<string>()
@@ -15,6 +14,14 @@ export const Select: React.FC<SelectProps> = ({
     setIsDropdownOpen(false)
   }, [selectedValue])
 
+  const handleOptionClick = (option: any) => {
+    if (option.value !== selectedValue) {
+      setSelectedValue(option.value);
+      setSelectedOption(option.name);
+    }
+    setIsDropdownOpen(false);
+  }
+
   return (
     <div className="relative text-left font-semibold">
       <div
@@ -22,11 +29,11 @@ export const Select: React.FC<SelectProps> = ({
         className="cursor-pointer rounded-lg bg-crayola px-4 py-2 text-md font-medium hover:bg-opacity-90 flex items-center justify-between"
       >
         <span className="pr-6">{selectedOption}</span>
-        <div
-          className="transform transition-transform"
-        >
+        <div className="transform transition-transform">
           <svg
-            className={`w-4 h-4 ml-2 origin-center ${isDropdownOpen ? 'rotate-180' : ''}`}
+            className={`w-4 h-4 ml-2 origin-center ${
+              isDropdownOpen ? 'rotate-180' : ''
+            }`}
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -49,10 +56,7 @@ export const Select: React.FC<SelectProps> = ({
             {options.map((option, index) => (
               <button
                 key={index}
-                onClick={() => {
-                  setSelectedValue(option.value)
-                  setSelectedOption(option.name)
-                }}
+                onClick={() => handleOptionClick(option)}
                 className="block w-full text-left px-4 py-2 text-md hover:bg-white/20 hover:text-white/80"
                 role="menuitem"
               >
