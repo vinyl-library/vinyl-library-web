@@ -1,14 +1,15 @@
 import { useBooksContext } from '@contexts'
-import { useState } from 'react'
 import { StockFilterProps } from './interface'
 
 export const StockFilter: React.FC<StockFilterProps> = ({ value, label }) => {
-  const [stockInput, setStockInput] = useState<string>('available')
-  const { setStock } = useBooksContext()
+  const { setStock, stock } = useBooksContext()
 
-  const handleStockRadioChange = (value: string) => {
-    setStockInput(value)
-    setStock(value)
+  const handleStockRadioChange = (newValue: string) => {
+    if (stock !== newValue) {
+      setStock(newValue)
+    } else {
+      setStock('')
+    }
   }
 
   return (
@@ -16,7 +17,7 @@ export const StockFilter: React.FC<StockFilterProps> = ({ value, label }) => {
       <input
         type="radio"
         value={value}
-        checked={stockInput === value}
+        checked={stock === value}
         onChange={() => handleStockRadioChange(value)}
         className="cursor-pointer"
       />

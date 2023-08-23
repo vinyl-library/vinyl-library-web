@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
 export interface BooksContextInterface {
+  stock: string
   sortBy: string
   orderBy: string
   keywordFilter: string
