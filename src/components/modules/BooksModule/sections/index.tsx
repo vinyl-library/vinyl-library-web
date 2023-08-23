@@ -111,6 +111,7 @@ export const BooksSection: React.FC = () => {
             onKeyDown={(e) => {
               if (e.key === 'Enter') setKeywordFilter(keywordInput)
             }}
+            placeholder="Search by author or title"
           />
         </div>
 
