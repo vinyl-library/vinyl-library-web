@@ -1,7 +1,10 @@
 import React from 'react'
 import { RandomSectionProps } from './interface'
 
-export const RandomSection: React.FC<RandomSectionProps> = ({ bgColor, aosDelay }) => {
+export const RandomSection: React.FC<RandomSectionProps> = ({
+  bgColor,
+  aosDelay,
+}) => {
   return (
     <section
       data-aos="fade-up"

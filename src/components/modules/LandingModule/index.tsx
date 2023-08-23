@@ -20,7 +20,8 @@ export const LandingModule: React.FC = () => {
       {user === undefined ? <></> : <RecommendedForYouSection />}
       <RandomSection
         bgColor={`${user === undefined ? 'powder' : 'lace'}`}
-        aosDelay={`${user === undefined ? 500 : 700}`} />
+        aosDelay={`${user === undefined ? 500 : 700}`}
+      />
     </>
   )
 }
