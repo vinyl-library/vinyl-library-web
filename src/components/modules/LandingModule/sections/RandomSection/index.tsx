@@ -1,11 +1,12 @@
 import React from 'react'
+import { RandomSectionProps } from './interface'
 
-export const RandomSection: React.FC = () => {
+export const RandomSection: React.FC<RandomSectionProps> = ({bgColor}) => {
   return (
     <section
       data-aos="fade-up"
       data-aos-delay="900"
-      className="flex flex-col gap-y-12 mx-auto h-full bg-lace py-24 px-16 3xl:px-12"
+      className={`flex flex-col gap-y-12 mx-auto h-full bg-${bgColor} py-24 px-16 3xl:px-12`}
     >
       <div className="w-full h-full flex flex-col gap-y-8 justify-center items-center">
         <span className="flex text-3xl font-extrabold text-bean">
