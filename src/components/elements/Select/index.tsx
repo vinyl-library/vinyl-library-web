@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { SelectProps } from './interface'
+import { useOnClickOutside } from 'usehooks-ts'
 
-export const Select: React.FC<SelectProps> = ({
-  options,
-  onChange,
-}) => {
+export const Select: React.FC<SelectProps> = ({ options, onChange }) => {
   const [selectedValue, setSelectedValue] = useState<string>()
   const [selectedOption, setSelectedOption] = useState<string>(options[0].name)
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
+  const ref = useRef(null)
 
   useEffect(() => {
     selectedValue && onChange(selectedValue)
@@ -16,14 +15,19 @@ export const Select: React.FC<SelectProps> = ({
 
   const handleOptionClick = (option: any) => {
     if (option.value !== selectedValue) {
-      setSelectedValue(option.value);
-      setSelectedOption(option.name);
+      setSelectedValue(option.value)
+      setSelectedOption(option.name)
     }
-    setIsDropdownOpen(false);
+    setIsDropdownOpen(false)
   }
 
+  useOnClickOutside(ref, () => {
+    console.log('Clicked outside dropdown')
+    setIsDropdownOpen(false)
+  })
+
   return (
-    <div className="relative text-left font-semibold">
+    <div className="relative text-left font-semibold" ref={ref}>
       <div
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         className="cursor-pointer rounded-lg bg-crayola px-4 py-2 text-md font-medium hover:bg-opacity-90 flex items-center justify-between"
