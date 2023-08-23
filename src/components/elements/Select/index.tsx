@@ -30,7 +30,7 @@ export const Select: React.FC<SelectProps> = ({ options, onChange }) => {
     <div className="relative text-left font-semibold" ref={ref}>
       <div
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        className="cursor-pointer rounded-lg bg-crayola px-4 py-2 text-md font-medium hover:bg-opacity-90 flex items-center justify-between"
+        className="cursor-pointer rounded-lg bg-crayola px-4 py-2 text-md font-medium hover:bg-opacity-90 flex items-center justify-between shadow"
       >
         <span className="pr-6">{selectedOption}</span>
         <div className="transform transition-transform">
@@ -50,7 +50,7 @@ export const Select: React.FC<SelectProps> = ({ options, onChange }) => {
         </div>
       </div>
       {isDropdownOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 xl:w-64 rounded-md shadow-lg bg-crayola ring-1 ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 w-56 xl:w-64 rounded-md shadow-lg bg-crayola">
           <div
             className="py-1"
             role="menu"
