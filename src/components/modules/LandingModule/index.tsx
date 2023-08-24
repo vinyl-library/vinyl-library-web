@@ -4,8 +4,11 @@ import 'aos/dist/aos.css'
 import { HeroSection, MostPopularSection } from './sections'
 import { RandomSection } from './sections/RandomSection'
 import { RecommendedForYouSection } from './sections/RecommendedForYouSection'
+import { useAuthContext } from '@contexts'
 
 export const LandingModule: React.FC = () => {
+  const { user } = useAuthContext()
+
   useEffect(() => {
     AOS.init()
   }, [])
@@ -14,8 +17,11 @@ export const LandingModule: React.FC = () => {
     <>
       <HeroSection />
       <MostPopularSection />
-      <RecommendedForYouSection />
-      <RandomSection />
+      {user === undefined ? <></> : <RecommendedForYouSection />}
+      <RandomSection
+        bgColor={`${user === undefined ? 'powder' : 'lace'}`}
+        aosDelay={`${user === undefined ? 500 : 700}`}
+      />
     </>
   )
 }

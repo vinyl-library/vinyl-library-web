@@ -6,7 +6,7 @@ const ProductSide: React.FC<ProductSideProps> = ({ imageUrl }) => {
   return (
     <div className="w-full group lg:w-1/2 h-28 lg:h-full mt-32 lg:mt-0 lg:bg-buff lg:bg-opacity-10 rounded-l-xl hidden lg:flex relative order-2 lg:order-1">
       <div className="text-center hidden lg:flex items-center justify-start h-full w-full select-none">
-        <span className="transform whitespace-nowrap h-full -rotate-90 lg:text-[44px] xl:text-[48px] 2xl:text-[64px] font-black uppercase text-crayola opacity-0 transition-all group-hover:opacity-60 ml-10 lg:ml-12 2xl:ml-18 group-hover:-ml-20 lg:group-hover:ml-20 duration-1000 lg:duration-700 ease-in-out">
+        <span className="transform whitespace-nowrap h-full -rotate-90 lg:text-[44px] xl:text-[48px] 2xl:text-[64px] font-black uppercase text-crayola opacity-0 transition-all group-hover:opacity-60 ml-10 lg:ml-12 2xl:ml-20 3xl:ml-36 group-hover:-ml-20 lg:group-hover:ml-20 3xl:group-hover:ml-40 duration-1000 lg:duration-700 ease-in-out">
           vinyl library
         </span>
       </div>
