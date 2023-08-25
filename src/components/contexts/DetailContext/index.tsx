@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react'
 import { DetailContextProps, DetailContextProviderProps } from './interface'
 
-const DetailContext = createContext<DetailContextProps | undefined>(undefined)
+const DetailContext = createContext<DetailContextProps>({} as DetailContextProps)
 
 export const useDetailContext = () => useContext(DetailContext)
 
