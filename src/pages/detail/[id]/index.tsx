@@ -19,15 +19,15 @@ const Detail = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps<
-  DetailPageProps
-> = async (context) => {
+export const getServerSideProps: GetServerSideProps<DetailPageProps> = async (
+  context
+) => {
   const { id } = context.query
 
   try {
     const res = await axios.get(process.env.NEXT_PUBLIC_API + `/api/book/${id}`)
     return { props: { book: res.data.data.book } }
-  } catch(error) {
+  } catch (error) {
     console.log(error)
     return { props: { book: null } }
   }
