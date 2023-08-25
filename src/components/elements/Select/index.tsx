@@ -22,7 +22,6 @@ export const Select: React.FC<SelectProps> = ({ options, onChange }) => {
   }
 
   useOnClickOutside(ref, () => {
-    console.log('Clicked outside dropdown')
     setIsDropdownOpen(false)
   })
 

@@ -3,17 +3,14 @@ import { ReactNode } from 'react'
 export interface DetailContextProviderProps {
   children: ReactNode
   book: Book
+  wishlisted: boolean
+  recommendations: Recommendation[]
 }
 
 export interface DetailContextProps {
   book: Book
-}
-
-export interface GetBookResponseInterface {
-  data: {
-    book: Book
-    recommendations: Recommendation[]
-  }
+  wishlisted: boolean
+  recommendations: Recommendation[]
 }
 
 export type Genre = {
@@ -24,7 +21,7 @@ export type Recommendation = {
   id: string
   title: string
   author: string
-  rating: string
+  rating: number
   genre: Genre[]
   coverUrl: string
 }
@@ -39,7 +36,6 @@ export type Book = {
   stock: number
   description: string
   rating: number
-  wishlisted: boolean
   genre: Genre[]
   coverUrl: string
 }

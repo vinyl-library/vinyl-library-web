@@ -52,7 +52,7 @@ export const MostPopularSection: React.FC = () => {
             rating={book.rating}
             coverUrl={book.coverUrl}
             bgColor="powder"
-            detailLink={book.id} // later change to detail link
+            detailLink={`/detail/${book.id}`}
           />
         ))}
       </div>

@@ -16,6 +16,7 @@ module.exports = {
         bean: '#3B1500',
         lace: '#F7F3E6',
         alabaster: '#EAE6D9',
+        success: '#46E72B',
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],

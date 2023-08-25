@@ -10,9 +10,13 @@ export const useDetailContext = () => useContext(DetailContext)
 export const DetailContextProvider: React.FC<DetailContextProviderProps> = ({
   children,
   book,
+  wishlisted,
+  recommendations,
 }) => {
   const contextValue = {
     book,
+    wishlisted,
+    recommendations,
   }
 
   return (

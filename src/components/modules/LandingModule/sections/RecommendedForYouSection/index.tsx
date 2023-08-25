@@ -52,7 +52,7 @@ export const RecommendedForYouSection: React.FC = () => {
             rating={book.rating}
             coverUrl={book.coverUrl}
             bgColor="lace"
-            detailLink={book.id} // later change to detail link
+            detailLink={`/detail/${book.id}`}
           />
         ))}
       </div>

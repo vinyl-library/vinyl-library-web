@@ -130,7 +130,12 @@ export const BooksSection: React.FC = () => {
         <div className="flex flex-wrap gap-6">
           {books.map((book, index) => {
             return (
-              <BookCard {...book} key={index} bgColor="white" detailLink="" />
+              <BookCard
+                {...book}
+                key={index}
+                bgColor="white"
+                detailLink={`/detail/${book.id}`}
+              />
             )
           })}
         </div>

@@ -30,7 +30,6 @@ export const AuthContextProvider: React.FC<AuthProviderProps> = ({
       data: body,
       withCredentials: true,
     })
-    console.log(res.data)
     return res.data as T
   }
 
