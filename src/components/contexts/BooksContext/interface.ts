@@ -35,6 +35,7 @@ export type Genre = {
   id: string
   name: string
 }
+
 export interface GetAllGenresResponseInterface {
   data: {
     genre: Genre[]
