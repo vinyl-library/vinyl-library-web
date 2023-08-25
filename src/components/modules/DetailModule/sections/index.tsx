@@ -61,8 +61,9 @@ export const DetailSection: React.FC = () => {
                 Description
               </span>
               <div
-                className={`max-w-[400px] text-black ${expanded ? '' : 'line-clamp-5'
-                  }`}
+                className={`max-w-[400px] text-black ${
+                  expanded ? '' : 'line-clamp-5'
+                }`}
               >
                 <p>{book.description}</p>
               </div>
